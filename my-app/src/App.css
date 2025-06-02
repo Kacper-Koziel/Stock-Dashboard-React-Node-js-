@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins';
+}
+
+.main-container {
+  width: 100dvw;
+  height: 100dvh;
+  background-color: #f4f7fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+@media (orientation: landscape) and (max-width: 800px) {
+  .main-container {
+    overflow: scroll;
+  }
+}
+
+@media (max-width: 800px) {
+  .main-container {
+    overflow-y: scroll;
+  }
+}

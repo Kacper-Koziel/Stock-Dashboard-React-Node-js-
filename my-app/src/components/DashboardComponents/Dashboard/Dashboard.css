@@ -1,0 +1,20 @@
+.dashboard-container {
+    height: 100%;
+    width: 100%;
+    background-color: #F8FAFC;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+}
+
+@media (min-width: 800px) {
+    .dashboard-container {
+        height: 90%;
+        width: 90%;
+        background-color: #F8FAFC;
+        border-radius: 24px;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+    }
+}

@@ -1,0 +1,133 @@
+.register-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.data.shown {
+    transition: all 1s ease;
+}
+
+.data.hidden {
+    transform: rotateY(-180deg);
+}
+
+.register-container h1 {
+    color: #da1212;
+    font-size: 28px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.input-field {
+    margin-bottom: 16px;
+    text-align: left;
+    position: relative;
+}
+
+.input-field h3 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #555;
+    font-weight: 500;
+}
+
+.input-field input[type="text"],
+.input-field input[type="password"],
+.input-field input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #333;
+    background-color: #f9f9f9;
+    transition: all 0.5s ease;
+}
+
+.input-field input[type="text"]:focus,
+.input-field input[type="password"]:focus, 
+.input-field input[type="email"]:focus {
+    border-color: #da1212;
+    outline: none;
+    background-color: #ffffff;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #da1212;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #f71c1c;
+    transform: translateY(-2px);
+}
+
+.register-options {
+    margin-top: 20px;
+    font-size: 16px;
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.register-options h5 {
+    color: #da1212;
+    cursor: pointer;
+    margin: 10px 0;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.register-options h5:hover {
+    color: #f71c1c;
+}
+
+.error-text {
+    color: red;
+    font-size: 12px;
+}
+
+@media (orientation: landscape)  and (max-width: 800px) {
+
+    .register-container {
+        padding: 60px;
+        max-width: 1080px;
+    }
+
+    .form-content {
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    .input-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    input[type="submit"] {
+        margin-top: 20px;
+    }
+}

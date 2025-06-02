@@ -1,0 +1,61 @@
+.side-btns-container {
+    width: 100%;
+    height: 50%;
+    position: relative;
+}
+
+.side-btns-container .side-btn {
+    padding: 1rem 0;
+    border-radius: 12px;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: color 0.5s ease;
+    cursor: pointer;
+}
+
+.side-btns-container .side-btn h3 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    z-index: 1;
+}
+
+.side-btns-container .side-btn.active {
+    color: white;
+}
+
+.active-meter {
+    position: absolute;
+    background-color: #da1212;
+    color: white;
+    width: 100%;
+    height: 20%;
+    z-index: 0;
+    border-radius: 16px;
+    transition: top 0.5s ease;
+    cursor: pointer;
+}
+
+.menu-btn-icon {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    transition: margin 1s ease;
+    z-index: 1;
+}
+
+.side-btns-container .side-btn:hover .menu-btn-icon {
+    margin-left: 14%;
+}
+
+@media (min-width: 800px) {
+
+    .side-btns-container {
+        border-radius: 16px;
+    }
+
+    .side-btns-container .side-btn {
+        padding: 1.2rem 0;
+
+    }
+}

@@ -1,0 +1,101 @@
+.sidebar-profile-container {
+    background-color: #da1212;
+    height: 30%;
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.sidebar-profile-container .text-container {
+    width: 100%;
+
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.sidebar-profile-container .text-container h1 {
+    font-size: calc(1rem + 0.5vw);
+    font-weight: 400;
+    color: white;
+}
+
+.sidebar-profile-container .text-container .profile-icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.sidebar-profile-container .img-container {
+    height: 50%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -20%;
+}
+
+.sidebar-profile-container .img-container .img-frame {
+    width: 36vw;
+    height: 36vw;
+    border-radius: 50%;
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: black;
+    border: 5px solid #F8FAFC;
+}
+
+.sidebar-profile-container img {
+    height: 100%;
+    width: auto;
+    display: flex;
+}
+
+.sidebar-profile-container .options-btn {
+    display: flex;
+    margin-bottom: 5%;
+    align-items: center;
+    background-color: #F8FAFC;
+    border-radius: 16px;
+    padding: 0 0.5rem;
+    gap: 5%;
+    transition: background 1s ease;
+    cursor: pointer;
+}
+
+.sidebar-profile-container .options-btn .settings-icon{
+    font-size: calc(1rem + 0.5vw);
+    border-radius: 50%;
+    padding: 1rem;
+    transition: transform 1s ease;
+}
+
+.sidebar-profile-container .options-btn:hover .settings-icon {
+    animation: spinningGear 1s ease-in-out;
+}
+
+@keyframes spinningGear {
+    0% {
+        transform: rotateZ(0);
+    }
+
+    100% {
+        transform: rotateZ(180deg);
+    }
+}
+
+@media (min-width: 800px) {
+    .sidebar-profile-container .img-container .img-frame {
+        height: 8vw;
+        width: 8vw;
+    }
+}
