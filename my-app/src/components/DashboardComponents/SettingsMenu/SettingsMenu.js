@@ -10,6 +10,7 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => 
 
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
+    const [id, setID] = useState('');
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const token = params.get('token');
@@ -34,6 +35,7 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => 
             if(response.status === 200) {
                 setUsername(data.username);
                 setEmail(data.email);
+                setID(data.id);
             }
             } catch (err) {
                 console.log(err);
@@ -43,8 +45,12 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => 
         fetchUserData();
     }, [token]);
 
+    const areOtherMenuOpen = () => {
+        return isModifyProfileMenuDisplayed;
+    }
+
     return (
-        <div className={`settings-menu-container ${isSettingsMenuDisplayed ? '' : 'hidden'}`} ref={scrollRef}>
+        <div className={`settings-menu-container ${isSettingsMenuDisplayed ? '' : 'hidden'} ${areOtherMenuOpen() ? 'lock' : ''}`} ref={scrollRef}>
             <div className="quit-btn" onClick={() => {setIsSettingsMenuDisplayed(false)} }>
                 <FontAwesomeIcon icon={faX} className="x-icon"/>
             </div>
@@ -105,7 +111,7 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => 
                 
             </div>
             
-            <ModifyProfileMenu isModifyProfileMenuDisplayed={isModifyProfileMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} />
+            <ModifyProfileMenu isModifyProfileMenuDisplayed={isModifyProfileMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} email={email} token={token} username={username} id={id}/>
         </div>
     );
 }

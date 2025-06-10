@@ -1,30 +1,32 @@
 const express = require('express')
 const router = express.Router();
-const connection = require('../Database/database')
+const connection = require('../../../Modules/Database/database')
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
-const uploadDir = path.join(__dirname, '../STORAGE/profile_images');
-const defaultImage = 'defaultPic.png';
+const uploadDir = path.join(__dirname, '../../../STORAGE/profile_images');
+const defaultImage = 'DefaultPic.png';
 
-const isLogged = (req, res, next) => {
+const isLogged = async (req, res, next) => {
     const token = req.query.token;
     const querry = "SELECT isActive FROM loggedTokens WHERE token = ?";
 
-    connection.query(querry, [token], (err, results) => {
-        if(err) 
-        {
-            console.log(err);
-            return res.status(400).json({ error: 'Query error' });
-        }
+    try
+    {
+        const [isActive] = await connection.query('SELECT isActive FROM loggedTokens WHERE token = ?', [token]);
 
-        if (results.length !== 1 || !results[0].isActive) {
-            console.log(results[0].isActive);
+        if (isActive.length !== 1 || !isActive[0].isActive) {
+            console.log(isActive[0].isActive);
             return res.status(401).json({ error: 'User is not logged in' });
         }
 
         next();
-    })
+    }
+    catch(err)
+    {
+        console.log(err);
+        return res.status(400).json({ error: err});
+    }
 }
 
 router.get('/', isLogged,  (req, res) => {

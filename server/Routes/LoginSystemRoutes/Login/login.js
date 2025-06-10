@@ -1,9 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const connection = require('../Database/database');
+const connection = require('../../../Modules/Database/database');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const promisedConnection = connection.promise();
 
 router.post('/', async (req, res) => {
 
@@ -19,7 +18,7 @@ router.post('/', async (req, res) => {
 
         for(const key in regexs)
         {
-            if(!regexs[key].test(req.body[key].trim()))
+            if(!req.body[key] || !regexs[key].test(req.body[key].trim()))
             {
                 errors[key] = `${key} is incorrect`;
             }
@@ -30,13 +29,11 @@ router.post('/', async (req, res) => {
             return res.status(400).json({ errors });
         }
 
-        const checkQuerry = 'SELECT * FROM `users` WHERE email = ? AND username = ?';
+        const [results] = await connection.query('SELECT * FROM `users` WHERE email = ? AND username = ?', [req.body.email, req.body.username]);
 
-        const [results] = await promisedConnection.query(checkQuerry, [req.body.email, req.body.username]);
-
-        if(results.length !== 1)
+        if(results.length === 0)
         {
-            return res.status(404).json({ error: "User does not exist" });
+            return res.status(404).json({ error: 'User does not exist' });
         }
 
         if (!(await bcrypt.compare(req.body.password, results[0].password))) 
@@ -45,11 +42,10 @@ router.post('/', async (req, res) => {
         }
 
         const token = crypto.randomBytes(32).toString('hex');
-        const tokenQuerry = "INSERT INTO loggedtokens (ID_user, token, isActive) VALUES (?, ?, ?)";
 
-        await promisedConnection.query(tokenQuerry, [results[0].ID, token, true]);
+        await connection.query('INSERT INTO loggedtokens (ID_user, token, isActive) VALUES (?, ?, ?)', [results[0].ID, token, true]);
 
-        return res.status(200).json({ message: "User logged successfully", token });
+        return res.status(200).json({ message: 'User logged successfully', token });
     }
     catch(err)
     {

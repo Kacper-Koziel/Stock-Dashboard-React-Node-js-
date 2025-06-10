@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router();
-const connection = require('../Database/database')
+const connection = require('../../../Modules/Database/database')
 
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
     const token = req.body.token;
 
     if(!token)
@@ -10,14 +10,9 @@ router.post('/', (req, res) => {
         return res.status(400).json({ err: 'Token is null' });
     }
 
-    const searchForToken = "SELECT isActive from loggedtokens WHERE token = ?";
-
-    connection.query(searchForToken, [token], (err, results) => {
-        if(err)
-        {
-            console.log(err);
-            return res.status(400).json({ err: 'Querry error' });
-        }
+    try 
+    {
+        const [results] = await connection.query('SELECT isActive from loggedtokens WHERE token = ?', [token]);
 
         if(results.length !== 1)
         {
@@ -25,8 +20,13 @@ router.post('/', (req, res) => {
         }
 
         return res.status(200).json({ isActive: results[0].isActive });
+    }
+    catch(err)
+    {
+        console.log(err);
+        return res.status(400).json({ error: err});
+    }
 
-    });
 });
 
 module.exports = router;
