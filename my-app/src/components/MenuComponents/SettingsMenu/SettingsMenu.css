@@ -33,6 +33,7 @@
     font-size: 1.5rem;
     padding: 1rem;
     border-radius: 50%;
+    cursor: pointer;
 }
 
 .settings-menu-container .data-container {
@@ -118,8 +119,7 @@
 }
 
 .settings-menu-container.hidden {
-    height: 0;
-    border: none;
+    display: none;
 }
 
 @keyframes moveLock {

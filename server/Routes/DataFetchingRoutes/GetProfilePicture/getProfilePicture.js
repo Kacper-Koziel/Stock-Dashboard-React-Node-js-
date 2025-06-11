@@ -16,7 +16,6 @@ const isLogged = async (req, res, next) => {
         const [isActive] = await connection.query('SELECT isActive FROM loggedTokens WHERE token = ?', [token]);
 
         if (isActive.length !== 1 || !isActive[0].isActive) {
-            console.log(isActive[0].isActive);
             return res.status(401).json({ error: 'User is not logged in' });
         }
 

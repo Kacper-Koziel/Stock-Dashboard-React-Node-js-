@@ -4,16 +4,17 @@ const connection = require('../../../Modules/Database/database');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
 
+    const regexs = {
+        email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+        username: /^[a-zA-Z0-9._\- ]{4,20}$/,
+        password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}$/
+    };
+
+
 router.post('/', async (req, res) => {
 
     try
     {
-        const regexs = {
-            email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-            username: /^[a-zA-Z0-9._\- ]{4,20}$/,
-            password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}$/
-        };
-
         const errors = {};
 
         for(const key in regexs)

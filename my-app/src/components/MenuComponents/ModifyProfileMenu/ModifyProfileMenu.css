@@ -15,8 +15,7 @@
 }
 
 .modify-profile-menu.hidden {
-    height: 0;
-    border: 0;
+    display: none;
 }
 
 @supports(height: 100dvh)
@@ -30,6 +29,17 @@
     margin-top: 1rem;
     margin-bottom: auto;
     font-weight: 500;
+}
+
+
+.modify-profile-menu .picture-container .profile-picture {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 24vh;
+    width: 24vh;
+    border-radius: 50%;
+    border: 2px solid #aeaeae;
 }
 
 .modify-profile-menu .quit-btn {
@@ -68,7 +78,7 @@ input[type="file"] {
 }
 
 .modify-profile-menu .upload-profile-pic .input-field label {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #da1212;
     font-weight: 500;
     border: 2px solid #da1212;
@@ -93,6 +103,7 @@ input[type="file"] {
     display: flex;
     align-items: center;
     gap: 2rem;
+    flex-direction: column;
 }
 
 
@@ -125,10 +136,16 @@ input[type="file"] {
 
 @media (min-width: 800px) {
     .modify-profile-menu {
-        height: 100vh;
+        top: 3%;
+        height: fit-content;
         width: 60vw;
         scrollbar-width: none;
         -ms-overflow-style: none;
+        right: 5%;
+    }
+
+    .modify-profile-menu .header {
+        margin-bottom: 1rem;
     }
 
     .modify-profile-menu .modify-light-data {
@@ -146,12 +163,18 @@ input[type="file"] {
         width: 100%;
     }
 
+    .modify-profile-menu .upload-profile-pic .input-field {
+        flex-direction: row;
+    }
+
     .modify-profile-menu .upload-profile-pic .input-field label {
         margin-left: 8%;
+        font-size: 1.2rem;
     }
 
     .modify-profile-menu .apply-container h4 {
         margin-right: 3%;
         margin-bottom: 1%;
     }
+    
 }

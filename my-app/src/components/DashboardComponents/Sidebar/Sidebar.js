@@ -5,7 +5,7 @@ import SidebarProfile from '../SidebarProfile/SidebarProfile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-const Sidebar = ({setIsSettingsMenuDisplayed}) => {
+const Sidebar = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => {
 
     const [isDispleyed, setIsDisplayed] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -29,7 +29,7 @@ const Sidebar = ({setIsSettingsMenuDisplayed}) => {
             <FontAwesomeIcon icon={faBars} className='menu-icon' onClick={handleSidebarBtn} />
             <div className={`sidebar-content ${isDispleyed || windowWidth >= 800 ? '' : 'hidden'} `}>
                 <Sidebtns />
-                <SidebarProfile setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed} />
+                <SidebarProfile setIsMenuHubDisplayed={setIsMenuHubDisplayed} isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed}/>
             </div>
         </div>
     );

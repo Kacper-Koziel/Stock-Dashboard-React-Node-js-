@@ -3,13 +3,14 @@ const router = express.Router();
 const connection = require('../../../Modules/Database/database');
 const bcrypt = require('bcrypt')
 
-router.post('/', async (req, res) => {
-    const regexs = {
-        email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-        username: /^[a-zA-Z0-9._\- ]{4,20}$/,
-        password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}$/
-    };
+const regexs = {
+    email: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+    username: /^[a-zA-Z0-9._\- ]{4,20}$/,
+    password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,20}$/
+};
 
+
+router.post('/', async (req, res) => {
     const errors = {};
 
     for(const key in regexs)

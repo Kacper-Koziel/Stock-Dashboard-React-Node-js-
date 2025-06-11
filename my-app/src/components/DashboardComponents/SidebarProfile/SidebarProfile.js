@@ -4,7 +4,7 @@ import './SidebarProfile.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
 
-const SidebarProfile = ({setIsSettingsMenuDisplayed}) => {
+const SidebarProfile = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const location = useLocation();
@@ -37,8 +37,6 @@ const SidebarProfile = ({setIsSettingsMenuDisplayed}) => {
         fetchUserData();
     }, [token]);
 
-
-
     return (
         <div className="sidebar-profile-container">
 
@@ -50,12 +48,10 @@ const SidebarProfile = ({setIsSettingsMenuDisplayed}) => {
             </div>
 
             <div className="text-container">
-                
                 <h1>{`Welcome ${username}`}</h1>
-
             </div>
 
-            <div className="options-btn" onClick={() => {setIsSettingsMenuDisplayed(true)}}>
+            <div className="options-btn" onClick={() => {setIsMenuHubDisplayed(true); setIsSettingsMenuDisplayed(true)}}>
                 <FontAwesomeIcon icon={faGear} className="settings-icon" /> 
             </div>
         </div>

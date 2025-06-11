@@ -11,7 +11,7 @@ router.post('/', async (req, res) => {
 
     try
     {
-        const results = await connection.query("SELECT email, expiration_date FROM passwordtokens WHERE token = ?", [req.body.token]);
+        const [results] = await connection.query("SELECT email, expiration_date FROM passwordtokens WHERE token = ?", [req.body.token]);
 
         if(results.length !== 1)
         {
@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-        const updateQuery = await connection.query("UPDATE users SET password = ? WHERE email = ?", [hashedPassword, results[0].email]);
+        const [updateQuery] = await connection.query("UPDATE users SET password = ? WHERE email = ?", [hashedPassword, results[0].email]);
     
         return res.status(200).json({ message: 'Password hanged' });
     }

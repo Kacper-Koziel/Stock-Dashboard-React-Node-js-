@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile, faFolder, faX } from "@fortawesome/free-solid-svg-icons";
 import LineHeader from "../../StyleComponents/LineHeader/LineHeader";
 
-const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenuDisplayed, email, token, username, id}) => {
+const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenuDisplayed, setIsSettingMenuDisplayed, email, token, username, id}) => {
     const imageUrl = `http://192.168.1.19:5000/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
 
     const [data, setData] = useState({
@@ -16,13 +16,13 @@ const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenu
     });
 
     const handleChange = (e) => {
-    if (e.target.type === 'file') {
-        setData(prev => ({ ...prev, [e.target.name]: e.target.files[0] }));
-        setData(prev => ({...prev, filename: e.target.value}))
-    } 
-    else {
-        setData(prev => ({ ...prev, [e.target.name]: e.target.value }));
-    }
+        if (e.target.type === 'file') {
+            setData(prev => ({ ...prev, [e.target.name]: e.target.files[0] }));
+            setData(prev => ({...prev, filename: e.target.value}))
+        } 
+        else {
+            setData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+        }
     };
 
     const validateUsername = (username) => {
@@ -64,7 +64,7 @@ const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenu
 
             if(response.status !== 200)
             {
-                console.log(response.err);
+                console.log(result.error);
                 return;
             }
 
@@ -78,7 +78,7 @@ const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenu
 
     return (
         <div className={`modify-profile-menu ${isModifyProfileMenuDisplayed ? '' : 'hidden'}`}>
-            <div className="quit-btn" onClick={() => {setIsModifyProfileMenuDisplayed(false)} }>
+            <div className="quit-btn" onClick={() => {setIsModifyProfileMenuDisplayed(false); setIsSettingMenuDisplayed(true); } }>
                 <FontAwesomeIcon icon={faX} className="x-icon"/>
             </div>
 

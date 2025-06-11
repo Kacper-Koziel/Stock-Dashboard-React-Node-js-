@@ -1,57 +1,17 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './SettingsMenu.css';
-import { faPen, faX, faLock, faCreditCard, faFloppyDisk, faPowerOff, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faX, faLock, faCreditCard, faFloppyDisk, faPowerOff, faTrash, faL } from "@fortawesome/free-solid-svg-icons";
 import LineHeader from '../../StyleComponents/LineHeader/LineHeader';
-import ModifyProfileMenu from "../ModifyProfileMenu/ModifyProfileMenu";
 
-const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => {
+const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setIsModifyProfileMenuDisplayed, setIsMenuHubDisplayed, email, token, username, id}) => {
 
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [id, setID] = useState('');
-    const location = useLocation();
-    const params = new URLSearchParams(location.search);
-    const token = params.get('token');
     const imageUrl = `http://192.168.1.19:5000/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
     const scrollRef = useRef(null);
 
-    const [isModifyProfileMenuDisplayed, setIsModifyProfileMenuDisplayed] = useState(false);
-
-    useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-            const response = await fetch('http://192.168.1.19:5000/getUsername', {
-                method: 'POST',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ token })
-            });
-
-            const data = await response.json();
-
-            if(response.status === 200) {
-                setUsername(data.username);
-                setEmail(data.email);
-                setID(data.id);
-            }
-            } catch (err) {
-                console.log(err);
-            }
-        };
-
-        fetchUserData();
-    }, [token]);
-
-    const areOtherMenuOpen = () => {
-        return isModifyProfileMenuDisplayed;
-    }
-
     return (
-        <div className={`settings-menu-container ${isSettingsMenuDisplayed ? '' : 'hidden'} ${areOtherMenuOpen() ? 'lock' : ''}`} ref={scrollRef}>
-            <div className="quit-btn" onClick={() => {setIsSettingsMenuDisplayed(false)} }>
+        <div className={`settings-menu-container ${isSettingsMenuDisplayed ? '' : 'hidden'}`} ref={scrollRef}>
+            <div className="quit-btn" onClick={() => {setIsSettingsMenuDisplayed(false); setIsMenuHubDisplayed(false); } }>
                 <FontAwesomeIcon icon={faX} className="x-icon"/>
             </div>
 
@@ -66,7 +26,7 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => 
                 <div className="data-container-text">
                     <h2>{username}</h2>
                     <h2 className="email">{email}</h2>
-                    <h1 onClick={() => {scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' }); setIsModifyProfileMenuDisplayed(true)}}>Modify profile <FontAwesomeIcon icon={faPen} className="lock-icon" /> </h1>
+                    <h1 onClick={() => {scrollRef.current.scrollTo({ top: 0, behavior: 'smooth' }); setIsModifyProfileMenuDisplayed(true); setIsSettingsMenuDisplayed(false); }}>Modify profile <FontAwesomeIcon icon={faPen} className="lock-icon" /> </h1>
                 </div>
             </div>
 
@@ -110,8 +70,6 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => 
                 </div>
                 
             </div>
-            
-            <ModifyProfileMenu isModifyProfileMenuDisplayed={isModifyProfileMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} email={email} token={token} username={username} id={id}/>
         </div>
     );
 }

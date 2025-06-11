@@ -1,0 +1,21 @@
+.menu-hub {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black;
+    height: 100vh;
+    width: 100vw;
+}
+
+.menu-hub.hidden {
+    display: none;
+}
+
+
+@media (min-width: 800px) { 
+    .menu-hub {
+        left: auto;
+        width: 70vw;
+        right: 0;
+    }
+}
