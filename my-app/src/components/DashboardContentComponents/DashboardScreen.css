@@ -3,8 +3,11 @@
     height: 100%;
     margin-left: auto;
     border-radius: 20px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0 2rem;
 }
-
 
 @media (min-width: 800px) { 
     .screen-container {

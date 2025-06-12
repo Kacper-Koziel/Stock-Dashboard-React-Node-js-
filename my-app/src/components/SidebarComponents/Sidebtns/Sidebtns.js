@@ -1,18 +1,32 @@
 import { faBell, faChartBar, faChartColumn, faHome, faTrophy, faUser, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import './Sidebtns.css'
 
-const Sidebtns = ({currentActive, setCurrentActive}) => {
+const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
+
+    const scrollTo = (index) => {
+        if(currentActive === index + 1)
+        {
+            return;
+        }
+
+        setIsObserving(false); 
+        setCurrentActive(index + 1);
+        refs[index].ref.current.scrollIntoView({behavior: 'smooth'});
+        setTimeout(() => {
+            setIsObserving(true);
+        }, 500);
+    }
 
     return (
         <div className="side-btns-container">
             <span className="active-meter" style={{ top: `${(currentActive - 1) * 20}%` }}></span>
-            <div className={`side-btn ${currentActive === 1 ? 'active' : ''}`} onClick={() => setCurrentActive(1)}>
+            <div className={`side-btn ${currentActive === 1 ? 'active' : ''}`} onClick={() => { scrollTo(0);}}>
                 <FontAwesomeIcon icon={faHome} className="menu-btn-icon"/>  
                 <h3>Home</h3>
             </div>
-            <div className={`side-btn ${currentActive === 2 ? 'active' : ''}`} onClick={() => setCurrentActive(2)}>
+            <div className={`side-btn ${currentActive === 2 ? 'active' : ''}`} onClick={() => {setIsObserving(false); setCurrentActive(2); scrollTo(1)}}>
                 <FontAwesomeIcon icon={faTrophy} className="menu-btn-icon"/>
                 <h3>Trending</h3>
             </div>

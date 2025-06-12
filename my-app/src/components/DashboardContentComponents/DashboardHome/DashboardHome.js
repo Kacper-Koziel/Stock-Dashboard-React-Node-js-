@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import './DashboardHome.css'
 
-const DashboardHome = ({currentActive}) => {
+const DashboardHome = ({currentActive, refs}) => {
     return (
-        <div className={`home-container ${currentActive === 1 ? 'shown' : 'hidden'}`}>
+        <div className={`home-container`} ref={refs[0]['ref']}>
             <div className="long-news">
                 <div className="news-overlay">
                     <h1>Stock analysis news</h1>

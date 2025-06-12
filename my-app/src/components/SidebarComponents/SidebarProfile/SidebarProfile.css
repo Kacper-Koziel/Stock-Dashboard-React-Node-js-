@@ -53,12 +53,6 @@
     border: 5px solid #F8FAFC;
 }
 
-.sidebar-profile-container img {
-    height: 100%;
-    width: auto;
-    display: flex;
-}
-
 .sidebar-profile-container .options-btn {
     display: flex;
     margin-bottom: 5%;
