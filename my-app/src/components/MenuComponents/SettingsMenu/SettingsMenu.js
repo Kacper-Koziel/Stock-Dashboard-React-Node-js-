@@ -1,13 +1,44 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './SettingsMenu.css';
-import { faPen, faX, faLock, faCreditCard, faFloppyDisk, faPowerOff, faTrash, faL } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faX, faLock, faCreditCard, faFloppyDisk, faPowerOff, faTrash } from "@fortawesome/free-solid-svg-icons";
 import LineHeader from '../../StyleComponents/LineHeader/LineHeader';
 
-const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setIsModifyProfileMenuDisplayed, setIsMenuHubDisplayed, email, token, username, id}) => {
+const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setIsModifyProfileMenuDisplayed, 
+    setIsMenuHubDisplayed, email, token, username, id, setIsPopUpDisplayed, setText}) => {
 
     const imageUrl = `http://192.168.1.19:5000/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
     const scrollRef = useRef(null);
+
+    const changePassword = async () => {
+        setText("Poczekaj chwilę");
+        setIsPopUpDisplayed(true);
+        try
+        {
+            const response = await fetch('http://192.168.1.19:5000/forgotPassword', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            });
+
+            if(response.status === 200)
+            {
+                setText("Na mail wysłano link do resetu hasła");
+            }
+            else
+            {
+                setText(await response.json().error);
+            }
+
+            setIsPopUpDisplayed(true);
+        }
+        catch(err)
+        {
+            console.log('Forgot password err: ', err);
+        }
+    }
 
     return (
         <div className={`settings-menu-container ${isSettingsMenuDisplayed ? '' : 'hidden'}`} ref={scrollRef}>
@@ -35,7 +66,7 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setI
                 <div className="data-container-text">
                     <h2>Your password is encrypted</h2>
                     <h2 className="email">forever..</h2>
-                    <h1>Change password <FontAwesomeIcon icon={faLock} className="lock-icon" /> </h1>
+                    <h1 onClick={changePassword}>Change password <FontAwesomeIcon icon={faLock} className="lock-icon" /> </h1>
                 </div>
                 
             </div>

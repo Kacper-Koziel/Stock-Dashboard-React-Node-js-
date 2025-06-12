@@ -3,9 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import './Sidebtns.css'
 
-const Sidebtns = ({}) => {
-
-    const [currentActive, setCurrentActive] = useState(1);
+const Sidebtns = ({currentActive, setCurrentActive}) => {
 
     return (
         <div className="side-btns-container">

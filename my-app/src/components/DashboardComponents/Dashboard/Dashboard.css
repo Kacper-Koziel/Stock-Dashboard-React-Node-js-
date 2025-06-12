@@ -1,7 +1,7 @@
 .dashboard-container {
     height: 100%;
     width: 100%;
-    background-color: #F8FAFC;
+    background-color: white;
     border-radius: 24px;
     display: flex;
     align-items: center;
@@ -11,7 +11,6 @@
     .dashboard-container {
         height: 90%;
         width: 90%;
-        background-color: #F8FAFC;
         border-radius: 24px;
         display: flex;
         align-items: center;

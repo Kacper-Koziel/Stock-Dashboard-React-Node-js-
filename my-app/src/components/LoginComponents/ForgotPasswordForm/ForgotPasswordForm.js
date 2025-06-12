@@ -13,7 +13,7 @@ const ForgotPasswordForm = ({ formState, setFormState }) => {
 
     const navigate = useNavigate();
 
-    const [isDisplayed, setIsDisplayed] = useState(false);
+    const [isPopUpDisplayed, setIsPopUpDisplayed] = useState(false);
     const [popUpText, setPopUpText] = useState("");
 
     const handleChanges = (e) => {
@@ -32,7 +32,7 @@ const ForgotPasswordForm = ({ formState, setFormState }) => {
         }
 
 
-        setIsDisplayed(true);
+        setIsPopUpDisplayed(true);
         setPopUpText("Wysłano email z linkiem do resetu hasła");
 
         handleSubmit();
@@ -80,7 +80,7 @@ const ForgotPasswordForm = ({ formState, setFormState }) => {
                         <h5 onClick={() => setFormState(2)}>Zarejestruj się</h5>
                     </div>
                 </form>
-                <PopUp isDisplayed={isDisplayed} setIsDisplayed={setIsDisplayed} text={popUpText}/>
+                <PopUp isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed} text={popUpText}/>
                 
             </div>
         </div>

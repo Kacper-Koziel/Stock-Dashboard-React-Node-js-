@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import SettingsMenu from '../../MenuComponents/SettingsMenu/SettingsMenu';
 import ModifyProfileMenu from "../../MenuComponents/ModifyProfileMenu/ModifyProfileMenu";
+import PopUp from "../../Alerts/PopUpAlert/PopUp";
 
 import './MenuHub.css'
 
@@ -41,11 +42,17 @@ const MenuHub = ({isMenuHubDisplayed, setIsMenuHubDisplayed, isSettingsMenuDispl
         fetchUserData();
     }, [token]);
 
+    const [text, setText] = useState('');
+    const [isPopUpDisplayed, setIsPopUpDisplayed] = useState(false);
+
 
     return (
         <div className={`menu-hub ${isMenuHubDisplayed ? '' : 'hidden'}`}>
-            <SettingsMenu isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} setIsMenuHubDisplayed={setIsMenuHubDisplayed} email={email} token={token} username={username} id={id}/>
+            <SettingsMenu isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} 
+            setIsMenuHubDisplayed={setIsMenuHubDisplayed} email={email} token={token} username={username} id={id} setIsPopUpDisplayed={setIsPopUpDisplayed} setText={setText}/>
             <ModifyProfileMenu isModifyProfileMenuDisplayed={isModifyProfileMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} setIsSettingMenuDisplayed={setIsSettingsMenuDisplayed} email={email} token={token} username={username} id={id} />
+        
+            <PopUp text={text} isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed} />
         </div>
     )
 }

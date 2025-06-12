@@ -142,9 +142,10 @@
 
 @media (min-width: 800px) {
     .settings-menu-container {
-        height: 100vh;
+        height: 80vh;
         width: 60vw;
-        right: 5%;
+        right: 10%;
+        margin-top: 10vh;
         scrollbar-width: none;
         -ms-overflow-style: none;
     }

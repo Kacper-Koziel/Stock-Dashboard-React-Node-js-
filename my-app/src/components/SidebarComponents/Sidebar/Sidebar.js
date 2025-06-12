@@ -5,13 +5,13 @@ import SidebarProfile from '../SidebarProfile/SidebarProfile'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-const Sidebar = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => {
+const Sidebar = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, currentActive, setCurrentActive }) => {
 
-    const [isDispleyed, setIsDisplayed] = useState(false);
+    const [isDisplayed, setIsDisplayed] = useState(false);
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
     const handleSidebarBtn = () => {
-        setIsDisplayed(!isDispleyed);
+        setIsDisplayed(!isDisplayed);
     }
 
     useEffect(() => {
@@ -25,10 +25,10 @@ const Sidebar = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsM
     })
 
     return (    
-        <div className={`sidebar-container`}>
+        <div className={`sidebar-container ${isDisplayed || windowWidth >= 800 ? '' : 'shrink'}`}>
             <FontAwesomeIcon icon={faBars} className='menu-icon' onClick={handleSidebarBtn} />
-            <div className={`sidebar-content ${isDispleyed || windowWidth >= 800 ? '' : 'hidden'} `}>
-                <Sidebtns />
+            <div className={`sidebar-content ${isDisplayed || windowWidth >= 800 ? '' : 'hidden'} `}>
+                <Sidebtns currentActive={currentActive} setCurrentActive={setCurrentActive} />
                 <SidebarProfile setIsMenuHubDisplayed={setIsMenuHubDisplayed} isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed}/>
             </div>
         </div>
