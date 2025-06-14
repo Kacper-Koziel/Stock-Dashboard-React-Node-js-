@@ -10,18 +10,10 @@ const DashboardTrending = ({currentActive, refs}) => {
     const [isFetched, setIsFetched] = useState(false)
 
     useEffect(() => {
-        fetch('https://api.coingecko.com/api/v3/search/trending').then(res => res.json())
+        fetch(`${process.env.REACT_APP_API_URL}/toplist`).then(res => res.json())
         .then(async data => 
             {
-                const trendingCoins = data.coins.map(({ item }) => item);
-                const ids = trendingCoins.map(coin => coin.id).join(',');
-
-                const pricesResponse = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${ids}&vs_currencies=usd`);
-                const prices = await pricesResponse.json();
-
-                const trendingWithPrices = trendingCoins.map(coin => ({...coin, price: prices[coin.id]?.usd ?? 'N/A'}));
-
-                setTrending(trendingWithPrices);
+                setTrending(data);
                 setIsFetched(true);
             }
         ).catch(err => console.log(err));
@@ -41,7 +33,7 @@ const DashboardTrending = ({currentActive, refs}) => {
                 ) : (
 
                     trending.map((coin) => (
-                        <div className="trendig-card">
+                        <div className="trendig-card" key={coin.id}>
                             <div className="image-frame" >
                                 <img src={coin.large} alt={coin.name} />
                             </div>

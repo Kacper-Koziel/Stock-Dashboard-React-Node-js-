@@ -12,7 +12,8 @@ const Dashboard = () => {
 
   const refs = [
     { id: 1, ref: useRef(null), name: 'home' },
-    { id: 2, ref: useRef(null), name: 'trending' }
+    { id: 2, ref: useRef(null), name: 'trending' },
+    { id: 3, ref: useRef(null), name: 'charts' }
   ];
 
   const [isObserving, setIsObserving] = useState(true);

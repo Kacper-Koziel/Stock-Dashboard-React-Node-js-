@@ -19,7 +19,7 @@ const MenuHub = ({isMenuHubDisplayed, setIsMenuHubDisplayed, isSettingsMenuDispl
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-            const response = await fetch('http://192.168.1.19:5000/getUsername', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/getUsername`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'

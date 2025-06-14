@@ -26,11 +26,11 @@ const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
                 <FontAwesomeIcon icon={faHome} className="menu-btn-icon"/>  
                 <h3>Home</h3>
             </div>
-            <div className={`side-btn ${currentActive === 2 ? 'active' : ''}`} onClick={() => {setIsObserving(false); setCurrentActive(2); scrollTo(1)}}>
+            <div className={`side-btn ${currentActive === 2 ? 'active' : ''}`} onClick={() => { scrollTo(1); }}>
                 <FontAwesomeIcon icon={faTrophy} className="menu-btn-icon"/>
                 <h3>Trending</h3>
             </div>
-            <div className={`side-btn ${currentActive === 3 ? 'active' : ''}`} onClick={() => setCurrentActive(3)}>
+            <div className={`side-btn ${currentActive === 3 ? 'active' : ''}`} onClick={() => { scrollTo(2); }}>
                 <FontAwesomeIcon icon={faChartColumn} className="menu-btn-icon"/> 
                 <h3>Charts</h3>
             </div>

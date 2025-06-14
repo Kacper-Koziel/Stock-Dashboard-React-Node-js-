@@ -41,7 +41,7 @@ const ForgotPasswordForm = ({ formState, setFormState }) => {
     const handleSubmit = async () => {
         try
         {
-            const response = await fetch('http://192.168.1.19:5000/forgotPassword', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/forgotPassword`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -3,6 +3,7 @@ import DashboardHome from './DashboardHome/DashboardHome';
 import DashboardTrending from "./DashboardTrending/DashboardTrending";
 
 import './DashboardScreen.css';
+import DashboardCharts from "./DashboardCharts/DashboardCharts";
 
 const DashboardScreen = ({currentActive, setCurrentActive, refs}) => {
 
@@ -10,6 +11,7 @@ const DashboardScreen = ({currentActive, setCurrentActive, refs}) => {
         <div className="screen-container">
             <DashboardHome currentActive={currentActive} refs={refs}/>
             <DashboardTrending currentActive={currentActive} refs={refs}/>
+            <DashboardCharts currentActive={currentActive} refs={refs} />
         </div>
     )
 }

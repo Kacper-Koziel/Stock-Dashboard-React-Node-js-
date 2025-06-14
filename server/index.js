@@ -14,6 +14,10 @@ const profilePictureRouter = require('./Routes/DataFetchingRoutes/GetProfilePict
 
 const updateUserDataRouter = require('./Routes/DataModifiers/UpdateUserData/updateUserData');
 
+const coinlistFetchingRouter = require('./Routes/DataFetchingRoutes/FetchCoinList/FetchCoinList');
+const topListRouter = require('./Routes/DataFetchingRoutes/FetchTopList/FetchTopList');
+const chartDataRouter = require('./Routes/DataFetchingRoutes/FetchChartData/FetchChartData');
+
 app.use(cors({
     origin: ['http://localhost:3000', 'http://192.168.1.19:3000'],
     methods: ['GET', 'POST'],
@@ -29,6 +33,9 @@ app.use('/isLogged', isLoggedRouter);
 app.use('/getUsername', getUsernameRouter);
 app.use('/getProfilePicture', profilePictureRouter);
 app.use('/updateUserData', updateUserDataRouter);
+app.use('/coinlist', coinlistFetchingRouter);
+app.use('/toplist', topListRouter);
+app.use('/chartData', chartDataRouter);
 
 app.listen(5000, '0.0.0.0', () => {
     console.log('Server is running on http://0.0.0.0:5000');

@@ -59,7 +59,7 @@ const RegisterForm = ({formState,setFormState}) => {
 
     const handleSubmit = async (errors) => {
         try {
-            const response = await fetch('http://192.168.1.19:5000/register', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

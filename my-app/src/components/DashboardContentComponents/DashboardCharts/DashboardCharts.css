@@ -1,0 +1,91 @@
+.charts-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    opacity: 1;
+    transition: margin 0.5s ease, opacity 1s ease;
+    margin-top: 3rem;
+    padding-top: 2rem;
+}
+
+.charts-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.charts-container .search-bar {
+    position: relative;
+    width: 95%;
+    display: flex;
+    align-items: center;
+}
+
+.charts-container .search-bar .search-icon {
+    position: absolute;
+    z-index: 2;
+    margin-left: 0.5rem;
+}
+
+.charts-container .search-bar input[type='text'] {
+    width: 100%;
+    height: 2rem;
+    outline: none;
+    border: 0;
+    border: 2px solid #AEAEAE;
+    border-radius: 32px;
+    padding-left: 2rem;
+}
+
+.charts-container .hints {
+    margin-top: 1rem;
+    width: 95%;
+    height: 8rem;
+    overflow-y: scroll;
+}
+
+.charts-container .hints .hint {
+    padding: 0.2rem ;
+    border-bottom: 2px solid #AEAEAE;
+    cursor: pointer;
+    transition: padding 0.3s ease;
+}
+
+.charts-container .hints .hint:hover {
+    padding-left: 2rem;
+}
+
+.charts-container .shadow-text {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #AEAEAE;
+    font-size: 1.2rem;
+}
+
+@media (min-width: 800px) {
+    .charts-container .search-bar {
+        width: 100%;
+    }
+
+    .charts-container .hints {
+        width: 100%;
+
+
+    }
+
+    .charts-container form {
+        width: 60%;
+    }
+
+    .charts-container .shadow-text {
+        font-size: 1.6rem;
+    }
+}

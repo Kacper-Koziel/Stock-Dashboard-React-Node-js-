@@ -10,12 +10,12 @@ const SidebarProfile = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSe
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const token = params.get('token');
-    const imageUrl = `http://192.168.1.19:5000/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+    const imageUrl = `${process.env.REACT_APP_API_URL}/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
 
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-            const response = await fetch('http://192.168.1.19:5000/getUsername', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/getUsername`, {
                 method: 'POST',
                 headers: {
                 'Content-Type': 'application/json'
@@ -51,7 +51,7 @@ const SidebarProfile = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSe
                 <h1>{`Welcome ${username}`}</h1>
             </div>
 
-            <div className="options-btn" onClick={() => {setIsMenuHubDisplayed(true); setIsSettingsMenuDisplayed(true)}}>
+            <div className="options-btn" onClick={() => {setIsMenuHubDisplayed(true); setIsSettingsMenuDisplayed(true); console.log(imageUrl)}}>
                 <FontAwesomeIcon icon={faGear} className="settings-icon" /> 
             </div>
         </div>

@@ -6,7 +6,7 @@ import { faFile, faFolder, faX } from "@fortawesome/free-solid-svg-icons";
 import LineHeader from "../../StyleComponents/LineHeader/LineHeader";
 
 const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenuDisplayed, setIsSettingMenuDisplayed, email, token, username, id}) => {
-    const imageUrl = `http://192.168.1.19:5000/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+    const imageUrl = `${process.env.REACT_APP_API_URL}/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
 
     const [data, setData] = useState({
         username: '',
@@ -55,7 +55,7 @@ const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenu
 
         try
         {
-            const response = await fetch('http://192.168.1.19:5000/updateUserData', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/updateUserData`, {
                 method: 'POST',
                 body: formData
             });

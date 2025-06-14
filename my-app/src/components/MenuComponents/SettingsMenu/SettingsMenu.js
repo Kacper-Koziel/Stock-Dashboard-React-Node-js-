@@ -7,7 +7,7 @@ import LineHeader from '../../StyleComponents/LineHeader/LineHeader';
 const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setIsModifyProfileMenuDisplayed, 
     setIsMenuHubDisplayed, email, token, username, id, setIsPopUpDisplayed, setText}) => {
 
-    const imageUrl = `http://192.168.1.19:5000/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
+    const imageUrl = `${process.env.REACT_APP_API_URL}/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
     const scrollRef = useRef(null);
 
     const changePassword = async () => {
@@ -15,7 +15,7 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setI
         setIsPopUpDisplayed(true);
         try
         {
-            const response = await fetch('http://192.168.1.19:5000/forgotPassword', {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/forgotPassword`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
