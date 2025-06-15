@@ -1,9 +1,16 @@
-import { faBell, faChartBar, faChartColumn, faHome, faTrophy, faUser, faWallet } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faChartBar, faChartColumn, faHome, faRightFromBracket, faTrophy, faUser, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, { useState, useRef } from "react";
 import './Sidebtns.css'
 
 const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
+
+    
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const token = params.get('token');
+    const navigate = useNavigate();
 
     const scrollTo = (index) => {
         if(currentActive === index + 1)
@@ -17,6 +24,29 @@ const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
         setTimeout(() => {
             setIsObserving(true);
         }, 500);
+    }
+
+    const logout = async () => {
+        try 
+        {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ token })
+            })
+
+            if(response.status === 200)
+            {
+                navigate('../')
+            }
+        }
+        catch(err)
+        {
+            console.log(err);
+            return;
+        }
     }
 
     return (
@@ -38,9 +68,9 @@ const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
                 <FontAwesomeIcon icon={faWallet} className="menu-btn-icon"/>
                 <h3>Wallet</h3>
             </div>
-            <div className={`side-btn ${currentActive === 5 ? 'active' : ''}`} onClick={() => setCurrentActive(5)}>
-                <FontAwesomeIcon icon={faBell} className="menu-btn-icon"/>
-                <h3>Notifications</h3>
+            <div className={`side-btn ${currentActive === 5 ? 'active' : ''}`} onClick={logout}>
+                <FontAwesomeIcon icon={faRightFromBracket} className="menu-btn-icon"/>
+                <h3>Logout</h3>
             </div>
         </div>
     );
