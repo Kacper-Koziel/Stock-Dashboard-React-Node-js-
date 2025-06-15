@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
@@ -19,9 +20,15 @@ const topListRouter = require('./Routes/DataFetchingRoutes/FetchTopList/FetchTop
 const chartDataRouter = require('./Routes/DataFetchingRoutes/FetchChartData/FetchChartData');
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'http://192.168.1.19:3000'],
-    methods: ['GET', 'POST'],
+    origin: [
+        `http://localhost:${process.env.FRONTEND_PORT}`,
+        `http://${process.env.PC_IP}:${process.env.FRONTEND_PORT}`
+    ],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    credentials: true,
 }));
+
+console.log(`http://${process.env.PC_IP}:${process.env.FRONTEND_PORT}`);
 
 app.use(express.json());
 
@@ -37,7 +44,7 @@ app.use('/coinlist', coinlistFetchingRouter);
 app.use('/toplist', topListRouter);
 app.use('/chartData', chartDataRouter);
 
-app.listen(5000, '0.0.0.0', () => {
-    console.log('Server is running on http://0.0.0.0:5000');
+app.listen(process.env.PORT, '0.0.0.0', () => {
+    console.log(`Server is running on http://0.0.0.0:${process.env.PORT}`);
 });
   
