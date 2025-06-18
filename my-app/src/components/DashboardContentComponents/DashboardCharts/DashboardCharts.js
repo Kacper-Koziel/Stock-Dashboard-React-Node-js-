@@ -2,17 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 
 import './DashboardCharts.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChartColumn, faL, faS, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faChartColumn, faSearch } from "@fortawesome/free-solid-svg-icons";
 import CryptoChart from "../../StyleComponents/Chart/Chart";
 import PopUp from "../../Alerts/PopUpAlert/PopUp";
 
 const DashboardCharts = ({currentActive, refs}) => {
 
     const [coins, setCoins] = useState([]);
-    const [isFetched, setIsFetched] = useState(false)
 
     const [cryptoResults, setCryptoResults] = useState([]);
-    const [searchedCoin, setSearchedCoin] = useState('');
     const [inputValue, setInputValue] = useState("");
     const [chartData, setChartData] = useState([]);
     const [isPopUpDisplayed, setIsPopUpDisplayed] = useState(false)
@@ -22,7 +20,7 @@ const DashboardCharts = ({currentActive, refs}) => {
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/coinlist`)
         .then(res => res.json())
-        .then(data => {setCoins(data); setIsFetched(true)})
+        .then(data => {setCoins(data);})
         .catch(err => console.error(err));
 
         document.addEventListener('mousedown', handleClick);
@@ -70,10 +68,8 @@ const DashboardCharts = ({currentActive, refs}) => {
 
         try
         {
-            console.log(coin);
             const res = await fetch(`${process.env.REACT_APP_API_URL}/chartData?searchedCoin=${encodeURIComponent(coin.id)}`);
             const data = await res.json();
-            console.log(res);
             if(res.status !== 200)
             {
                 setIsPopUpDisplayed(true);
@@ -91,7 +87,6 @@ const DashboardCharts = ({currentActive, refs}) => {
     }
 
     const handleHintUse = (coin) => {
-        setSearchedCoin(coin.id);
         setInputValue(`(${coin.symbol.toUpperCase()}) ${coin.name}`);
         createChart({ preventDefault: () => {}}, coin);
     }

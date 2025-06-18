@@ -1,7 +1,6 @@
-import { faBell, faChartBar, faChartColumn, faHome, faRightFromBracket, faTrophy, faUser, faWallet } from "@fortawesome/free-solid-svg-icons";
+import { faChartColumn, faHome, faRightFromBracket, faTrophy, faScaleBalanced } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useLocation, useNavigate } from "react-router-dom";
-import React, { useState, useRef } from "react";
 import './Sidebtns.css'
 
 const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
@@ -21,9 +20,7 @@ const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
         setIsObserving(false); 
         setCurrentActive(index + 1);
         refs[index].ref.current.scrollIntoView({behavior: 'smooth'});
-        setTimeout(() => {
-            setIsObserving(true);
-        }, 500);
+        setIsObserving(true);
     }
 
     const logout = async () => {
@@ -64,9 +61,9 @@ const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
                 <FontAwesomeIcon icon={faChartColumn} className="menu-btn-icon"/> 
                 <h3>Charts</h3>
             </div>
-            <div className={`side-btn ${currentActive === 4 ? 'active' : ''}`} onClick={() => setCurrentActive(4)}>
-                <FontAwesomeIcon icon={faWallet} className="menu-btn-icon"/>
-                <h3>Wallet</h3>
+            <div className={`side-btn ${currentActive === 4 ? 'active' : ''}`} onClick={() => { scrollTo(3); }}>
+                <FontAwesomeIcon icon={faScaleBalanced} className="menu-btn-icon"/>
+                <h3>Comparison</h3>
             </div>
             <div className={`side-btn ${currentActive === 5 ? 'active' : ''}`} onClick={logout}>
                 <FontAwesomeIcon icon={faRightFromBracket} className="menu-btn-icon"/>

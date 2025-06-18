@@ -1,0 +1,137 @@
+.comparison-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    opacity: 1;
+    transition: margin 0.5s ease, opacity 1s ease;
+    margin-top: 3rem;
+    padding-top: 2rem;
+}
+
+.comparison-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.comparison-container .search-bar {
+    position: relative;
+    width: 95%;
+    display: flex;
+    align-items: center;
+}
+
+.comparison-container .search-bar .search-icon {
+    position: absolute;
+    z-index: 2;
+    margin-left: 0.5rem;
+}
+
+.comparison-container .search-bar input[type='text'] {
+    width: 100%;
+    height: 2rem;
+    outline: none;
+    border: 0;
+    border: 2px solid #AEAEAE;
+    border-radius: 32px;
+    padding-left: 2rem;
+}
+
+.comparison-container .subm-btn {
+    width: 60%;
+    padding: 0.8rem;
+    margin-top: 2rem;
+    background-color: transparent;
+    border-radius: 24px;
+    color: #AEAEAE;
+    border: 2px solid #AEAEAE;
+    transition: all 0.3s;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.comparison-container .subm-btn:hover {
+    border-color: #da1212;
+    color: #da1212;
+    transform: translateY(-5px);
+}
+
+.comparison-container .hints {
+    margin-top: 1rem;
+    width: 95%;
+    height: 8rem;
+    overflow-y: scroll;
+}
+
+.comparison-container .hints .hint {
+    padding: 0.2rem ;
+    border-bottom: 2px solid #AEAEAE;
+    cursor: pointer;
+    transition: padding 0.3s ease;
+}
+
+.comparison-container .hints .hint:hover {
+    padding-left: 2rem;
+}
+
+.comparison-container .rows {
+    width: 100%;
+    justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    height: 200%;
+    gap: 2rem;
+    
+}
+
+.comparison-container .rows .row{
+    height: 100%;
+    width: 100%;
+    min-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 32px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    padding: 1rem;
+}
+
+.comparison-container .rows .row .coin-name{
+    margin: 1rem;
+}
+
+.comparison-container .rows .row .text {
+    width: 100%;
+    margin-left: 2rem;
+}
+
+
+@media (min-width: 800px) {
+    .comparison-container .search-bar {
+        width: 100%;
+    }
+
+    .comparison-container .hints {
+        width: 100%;
+    }
+
+    .comparison-container form {
+        width: 60%;
+    }
+
+    .comparison-container .shadow-text {
+        font-size: 1.6rem;
+    }
+
+    .comparison-container .subm-btn {
+        width: 30%;
+    }
+}

@@ -4,6 +4,7 @@ import DashboardTrending from "./DashboardTrending/DashboardTrending";
 
 import './DashboardScreen.css';
 import DashboardCharts from "./DashboardCharts/DashboardCharts";
+import DashboardComparison from "./DashboardComparison/DashboardComparison";
 
 const DashboardScreen = ({currentActive, setCurrentActive, refs}) => {
 
@@ -12,6 +13,7 @@ const DashboardScreen = ({currentActive, setCurrentActive, refs}) => {
             <DashboardHome currentActive={currentActive} refs={refs}/>
             <DashboardTrending currentActive={currentActive} refs={refs}/>
             <DashboardCharts currentActive={currentActive} refs={refs} />
+            <DashboardComparison currentActive={currentActive} refs={refs} />
         </div>
     )
 }

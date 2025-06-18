@@ -25,6 +25,8 @@ router.get('/', async (req, res) => {
             price,
         }));
 
+        console.log('Retrived data for ' + req.query.searchedCoin);
+
         return res.status(200).json({ chartData: charData });
     }
     catch(err)

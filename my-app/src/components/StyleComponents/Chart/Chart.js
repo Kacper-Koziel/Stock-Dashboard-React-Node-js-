@@ -1,12 +1,10 @@
 import { Line } from 'react-chartjs-2'
 import { Chart as ChartJS, LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend } from 'chart.js';
 import './Chart.css';
+import { useEffect } from 'react';
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend);
 
 const CryptoChart = ({ chartData }) => {
-
-    const prices = chartData.map(point => point.price);
-
     const data = {
         labels: chartData.map(point => point.time),
         datasets: [
@@ -33,10 +31,14 @@ const CryptoChart = ({ chartData }) => {
         }
     };
 
+    useEffect(() => {
+        console.log(chartData);
+    }, [chartData]);
+
     return (
-    <div className='chart-container'>
-        <Line data={data} options={options} />
-    </div>
+        <div className='chart-container'>
+            <Line data={data} options={options} />
+        </div>
 
     );
 }
