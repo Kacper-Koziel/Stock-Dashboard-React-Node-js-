@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './LoginForm.css';
 
-const LoginForm = ({ formState, setFormState, setIsLogged }) => {
+const LoginForm = ({ formState, setFormState, setIsLogged, colorMode, languageVersion }) => {
     const navigate = useNavigate();
 
     const [data, setData] = useState({
@@ -114,7 +114,7 @@ const LoginForm = ({ formState, setFormState, setIsLogged }) => {
     }
 
     return (
-        <div className="login-container">
+        <div className={`login-container ${colorMode}`}>
             <div className={`data ${formState === 1 ? 'shown' : 'hidden'}`}>
                 <h1>Zaloguj się </h1>
                 <form className="form-content" onSubmit={validateData}>

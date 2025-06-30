@@ -96,6 +96,10 @@
     color: rgb(13, 179, 13);
 }
 
+.settings-menu-container .data-container .data-container-text span.disabled {
+    color: red;
+}
+
 .settings-menu-container .data-container .data-container-text h1.delete {
     background-color: #da1212;
     color: white;

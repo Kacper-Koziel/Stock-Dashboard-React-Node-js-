@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useNavigate } from "react-router-dom";
 import './SettingsMenu.css';
-import { faPen, faX, faLock, faCreditCard, faFloppyDisk, faPowerOff, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPen, faX, faLock, faFloppyDisk, faPowerOff, faTrash } from "@fortawesome/free-solid-svg-icons";
 import LineHeader from '../../StyleComponents/LineHeader/LineHeader';
 
 const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setIsModifyProfileMenuDisplayed, 
@@ -9,6 +10,9 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setI
 
     const imageUrl = `${process.env.REACT_APP_API_URL}/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
     const scrollRef = useRef(null);
+    const [isActive, setIsActive] = useState(true);
+    const navigate = useNavigate();
+
 
     const changePassword = async () => {
         setText("Poczekaj chwilę");
@@ -37,6 +41,42 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setI
         catch(err)
         {
             console.log('Forgot password err: ', err);
+        }
+    }
+
+    const deleteAcc = async () => {
+        try
+        {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/deleteAccount`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            });
+
+            if(response.status !== 200)
+            {
+                console.log(await response.json());
+                return
+            }
+
+            const logoutRes = await fetch(`${process.env.REACT_APP_API_URL}/logout`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ token })
+            }) 
+
+            if(logoutRes.status === 200)
+            {
+                navigate('../');
+            }
+        }
+        catch(err)
+        {
+            console.log(err);
         }
     }
 
@@ -72,15 +112,6 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setI
             </div>
 
             <div className="data-container">
-                <LineHeader text={'Purchases'} />
-                <div className="data-container-text">
-                    <h2>Your total spendings: 0$</h2>
-                    <h1>Payment history <FontAwesomeIcon icon={faCreditCard} className="lock-icon" /> </h1>
-                </div>
-                
-            </div>
-
-            <div className="data-container">
                 <LineHeader text={'App settings'} />
                 <div className="data-container-text">
                     <h2>Language: English</h2>
@@ -93,10 +124,10 @@ const SettingsMenu = ({isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, setI
             <div className="data-container">
                 <LineHeader text={'Actions'} />
                 <div className="data-container-text">
-                    <h2>Account: <span className="active">Active</span></h2>
+                    <h2>Account: {isActive ? <span className="active">Active</span> : <span className="disabled">Disabled</span>}</h2>
                     <div className="btns">
-                        <h1>Disable account <FontAwesomeIcon icon={faPowerOff} className="lock-icon" /> </h1>
-                        <h1 className="delete">Delete account <FontAwesomeIcon icon={faTrash} className="lock-icon" /> </h1>
+                        <h1 onClick={() => setIsActive(!isActive)}>Disable account <FontAwesomeIcon icon={faPowerOff} className="lock-icon" /> </h1>
+                        <h1 className="delete" onClick={deleteAcc}>Delete account <FontAwesomeIcon icon={faTrash} className="lock-icon" /> </h1>
                     </div>
                 </div>
                 

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import './RegisterForm.css';
 
 
-const RegisterForm = ({formState,setFormState}) => {
+const RegisterForm = ({formState, setFormState, colorMode, languageVersion}) => {
     const [data, setData] = useState({
         username: '',
         email: '',
@@ -107,7 +107,7 @@ const RegisterForm = ({formState,setFormState}) => {
 
     return (
         
-        <div className="register-container">
+        <div className={`register-container ${colorMode}`}>
 
             <div className={`data ${formState === 2 ? 'shown' : 'hidden'}`}>
 

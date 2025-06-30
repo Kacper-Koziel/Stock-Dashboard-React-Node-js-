@@ -5,7 +5,7 @@ import RegisterForm from "./RegisterForm/RegisterForm";
 import ForgotPasswordForm from "./ForgotPasswordForm/ForgotPasswordForm";
 import './LoginOperations.css'
 
-const LoginOperations = ({setIsLogged}) => {
+const LoginOperations = ({setIsLogged, colorMode, languageVersion}) => {
     const navigate = useNavigate();
     const [formState, setFormState] = useState(1);
     
@@ -57,15 +57,15 @@ const LoginOperations = ({setIsLogged}) => {
         <div className="operations-cards">
 
             <div className={`${formState === 1 ? 'shown' : 'hidden'} card`}>
-                <LoginForm formState={formState} setFormState={setFormState} setIsLogged={setIsLogged} />
+                <LoginForm formState={formState} setFormState={setFormState} setIsLogged={setIsLogged} colorMode={colorMode} languageVersion={languageVersion}/>
             </div>
 
             <div className={`${formState === 2 ? 'shown' : 'hidden'} card`}>
-                <RegisterForm formState={formState} setFormState={setFormState}/>
+                <RegisterForm formState={formState} setFormState={setFormState} colorMode={colorMode} languageVersion={languageVersion}/>
             </div>
 
             <div className={`${formState === 3 ? 'shown' : 'hidden'} card`}>
-                <ForgotPasswordForm formState={formState} setFormState={setFormState}/>
+                <ForgotPasswordForm formState={formState} setFormState={setFormState} colorMode={colorMode} languageVersion={languageVersion}/>
             </div>
             
         </div>

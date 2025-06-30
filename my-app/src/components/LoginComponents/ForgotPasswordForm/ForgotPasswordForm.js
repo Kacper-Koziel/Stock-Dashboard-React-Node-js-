@@ -3,9 +3,8 @@ import {useNavigate} from 'react-router-dom';
 import PopUp from "../../Alerts/PopUpAlert/PopUp";
 
 import './ForgotPasswordForm.css'
-import { faL } from "@fortawesome/free-solid-svg-icons";
 
-const ForgotPasswordForm = ({ formState, setFormState }) => {
+const ForgotPasswordForm = ({ formState, setFormState, colorMode, languageVersion }) => {
 
     const [email, setEmail] = useState('');
 
@@ -62,7 +61,7 @@ const ForgotPasswordForm = ({ formState, setFormState }) => {
     }
 
     return (
-        <div className="forgot-password-container">
+        <div className={`forgot-password-container ${colorMode}`}>
             <div className={`data ${formState === 3 ? 'shown' : 'hidden'}`}>
                 <h1> Odzyskaj hasło </h1>
                 <form onSubmit={validateData}>

@@ -1,35 +1,21 @@
 .register-container {
-    background-color: #ffffff;
+    background-color: #f8f9fa;
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
     max-width: 420px;
     width: 100%;
     text-align: center;
-    transition: transform 0.3s ease;
-}
-
-.data.shown {
-    transition: all 1s ease;
-}
-
-.data.hidden {
-    transform: rotateY(-180deg);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .register-container h1 {
-    color: #da1212;
+    color: #333;
     font-size: 28px;
     margin-bottom: 25px;
     font-weight: 600;
     letter-spacing: 1px;
     transition: color 0.3s ease;
-}
-
-.input-field {
-    margin-bottom: 16px;
-    text-align: left;
-    position: relative;
 }
 
 .input-field h3 {
@@ -39,32 +25,39 @@
     font-weight: 500;
 }
 
+.input-field {
+    margin-bottom: 16px;
+    text-align: left;
+    position: relative;
+}
+
+
 .input-field input[type="text"],
 .input-field input[type="password"],
 .input-field input[type="email"] {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 16px;
     color: #333;
-    background-color: #f9f9f9;
-    transition: all 0.5s ease;
+    background-color: #f1f1f1;
+    transition: all 0.3s ease;
 }
 
 .input-field input[type="text"]:focus,
-.input-field input[type="password"]:focus, 
+.input-field input[type="password"]:focus,
 .input-field input[type="email"]:focus {
-    border-color: #da1212;
+    border-color: #999;
+    background-color: #fff;
     outline: none;
-    background-color: #ffffff;
 }
 
 input[type="submit"] {
     width: 100%;
     padding: 15px;
-    background-color: #da1212;
-    color: #ffffff;
+    background-color: #444;
+    color: #fff;
     border: none;
     border-radius: 8px;
     font-size: 18px;
@@ -72,26 +65,17 @@ input[type="submit"] {
     font-weight: 500;
     letter-spacing: 1px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
     margin-top: 4px;
 }
 
 input[type="submit"]:hover {
-    background-color: #f71c1c;
+    background-color: #555;
     transform: translateY(-2px);
 }
 
-.register-options {
-    margin-top: 20px;
-    font-size: 16px;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-}
-
 .register-options h5 {
-    color: #da1212;
+    color: #666;
     cursor: pointer;
     margin: 10px 0;
     font-weight: 500;
@@ -99,13 +83,69 @@ input[type="submit"]:hover {
 }
 
 .register-options h5:hover {
-    color: #f71c1c;
+    color: #444;
 }
 
 .error-text {
-    color: red;
+    color: #cc0000;
     font-size: 12px;
 }
+
+
+.register-container.dark {
+    background-color: #121212;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.register-container.dark h1 {
+    color: #f0f0f0;
+}
+
+.register-container.dark .input-field h3 {
+    color: #b0b0b0;
+}
+
+.register-container.dark .input-field input[type="text"],
+.register-container.dark .input-field input[type="password"],
+.register-container.dark .input-field input[type="email"] {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.register-container.dark .input-field input[type="text"]:focus,
+.register-container.dark .input-field input[type="password"]:focus, 
+.register-container.dark .input-field input[type="email"]:focus {
+    background-color: #222;
+    border-color: #555;
+}
+
+.register-container.dark input[type="submit"] {
+    background-color: #2e2e2e;
+    color: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.register-container.dark input[type="submit"]:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-2px);
+}
+
+.register-container.dark .register-options h5 {
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.register-container.dark .register-options h5:hover {
+    color: #aaa;
+}
+
+.register-container.dark .error-text {
+    color: #ff5555;
+}
+
 
 @media (orientation: landscape)  and (max-width: 800px) {
 

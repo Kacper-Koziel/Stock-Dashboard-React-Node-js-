@@ -36,7 +36,7 @@ const Sidebtns = ({currentActive, setCurrentActive, refs, setIsObserving}) => {
 
             if(response.status === 200)
             {
-                navigate('../')
+                navigate('../');
             }
         }
         catch(err)

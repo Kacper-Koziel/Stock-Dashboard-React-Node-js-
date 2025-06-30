@@ -215,9 +215,9 @@ const DashboardComparison = ({currentActive, refs}) => {
 
                     {secondChartData.length > 0 ? (                        
                         <>
-                            <CryptoChart chartData={firstChartData} />
+                            <CryptoChart chartData={secondChartData} />
                             <div className="text">
-                                <h2>Current price: {firstChartData[firstChartData.length - 1].price > 0.01 ? firstChartData[firstChartData.length - 1].price.toFixed(2) : firstChartData[firstChartData.length - 1].price.toFixed(4)} USD</h2>
+                                <h2>Current price: {secondChartData[secondChartData.length - 1].price > 0.01 ? secondChartData[secondChartData.length - 1].price.toFixed(2) : secondChartData[secondChartData.length - 1].price.toFixed(4)} USD</h2>
                             </div>
                         </>
                     ) : <></>}

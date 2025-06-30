@@ -15,6 +15,7 @@ const profilePictureRouter = require('./Routes/DataFetchingRoutes/GetProfilePict
 
 const updateUserDataRouter = require('./Routes/DataModifiers/UpdateUserData/updateUserData');
 const logoutRouter = require('./Routes/DataModifiers/Logout/Logout');
+const deleteUserRouter = require('./Routes/DataModifiers/DeleteAccount/deleteAccount');
 
 const coinlistFetchingRouter = require('./Routes/DataFetchingRoutes/FetchCoinList/FetchCoinList');
 const topListRouter = require('./Routes/DataFetchingRoutes/FetchTopList/FetchTopList');
@@ -45,6 +46,7 @@ app.use('/coinlist', coinlistFetchingRouter);
 app.use('/toplist', topListRouter);
 app.use('/chartData', chartDataRouter);
 app.use('/logout', logoutRouter);
+app.use('/deleteAccount', deleteUserRouter);
 
 app.listen(process.env.PORT, '0.0.0.0', () => {
     console.log(`Server is running on http://0.0.0.0:${process.env.PORT}`);
