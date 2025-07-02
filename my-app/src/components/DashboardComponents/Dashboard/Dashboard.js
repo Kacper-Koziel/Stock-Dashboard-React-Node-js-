@@ -4,7 +4,7 @@ import Sidebar from '../../SidebarComponents/Sidebar/Sidebar.js';
 import MenuHub from '../MenuHub/MenuHub.js';
 import DashboardScreen from '../../DashboardContentComponents/DashboardScreen.js';
 
-const Dashboard = () => {
+const Dashboard = ({colorMode, languageVersion, setColorMode, setLanguageVersion}) => {
   
   const [isMenuHubDisplayed, setIsMenuHubDisplayed] = useState(false);
   const [isSettingsMenuDisplayed, setIsSettingsMenuDisplayed] = useState(false);
@@ -70,10 +70,10 @@ const Dashboard = () => {
 
 
   return (
-    <div className='dashboard-container'>
-        <Sidebar setIsMenuHubDisplayed={setIsMenuHubDisplayed} isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed} currentActive={currentActive} setCurrentActive={setCurrentActive} refs={refs} setIsObserving={setIsObserving}/>
-        <MenuHub isMenuHubDisplayed={isMenuHubDisplayed} setIsMenuHubDisplayed={setIsMenuHubDisplayed} isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed}/>
-        <DashboardScreen currentActive={currentActive} setCurrentActive={setCurrentActive} refs={refs} />
+    <div className={`dashboard-container ${colorMode}`}>
+        <Sidebar setIsMenuHubDisplayed={setIsMenuHubDisplayed} isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed} currentActive={currentActive} setCurrentActive={setCurrentActive} refs={refs} setIsObserving={setIsObserving} colorMode={colorMode} languageVersion={languageVersion}/>
+        <MenuHub isMenuHubDisplayed={isMenuHubDisplayed} setIsMenuHubDisplayed={setIsMenuHubDisplayed} isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed} colorMode={colorMode} languageVersion={languageVersion} setColorMode={setColorMode} setLanguageVersion={setLanguageVersion}/>
+        <DashboardScreen currentActive={currentActive} setCurrentActive={setCurrentActive} refs={refs} colorMode={colorMode} languageVersion={languageVersion}/>
     </div>
   )
 }

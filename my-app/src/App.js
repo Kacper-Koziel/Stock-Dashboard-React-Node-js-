@@ -8,8 +8,8 @@ import ResetPassword from './resetPassword/reset.js';
 
 function App() {
   const [isLogged, setIsLogged] = useState(false);
-  const [colorMode, setColorMode] = useState("dark");
-  const [languageVersion, setLanguageVersion] = useState('PL');
+  const [colorMode, setColorMode] = useState("light");
+  const [languageVersion, setLanguageVersion] = useState('EN');
 
   useEffect(() => {
     const savedMode = localStorage.getItem('colorMode');
@@ -21,6 +21,8 @@ function App() {
     if (savedLanguage) {
       setLanguageVersion(savedLanguage);
     }
+
+    console.log(savedMode, savedLanguage);
   }, []);
 
 
@@ -30,12 +32,11 @@ function App() {
         <Routes>
           <Route path='/' element={<LoginOperations setIsLogged={setIsLogged} colorMode={colorMode} languageVersion={languageVersion}/>} />
 
-          <Route path='/reset-password' element={<ResetPassword />} />
+          <Route path='/reset-password' element={<ResetPassword colorMode={colorMode} languageVersion={languageVersion} />} />
 
-          <Route path='/logged' element={ <Dashboard />} />
+          <Route path='/logged' element={ <Dashboard colorMode={colorMode} languageVersion={languageVersion} setColorMode={setColorMode} setLanguageVersion={setLanguageVersion}/>} />
         </Routes>
       </Router>
-      
     </div>
   );
 }

@@ -46,6 +46,28 @@
     transform: translateY(-2px);
 }
 
+.PopUp-content.dark {
+    background-color: #1e1e1e;
+    color: #ddd;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.8);
+}
+
+.PopUp-content.dark p {
+    color: #ccc;
+}
+
+.PopUp-content.dark  .PopUp-close-btn {
+    background-color: #2e2e2e;
+    color: white;
+    transition: transform 0.5s ease, background 0.5s ease;
+}
+
+.PopUp-content.dark .PopUp-close-btn:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-2px);
+}
+
+
 @media (min-width: 800px) { 
     .PopUp-content {
         min-width: 600px;

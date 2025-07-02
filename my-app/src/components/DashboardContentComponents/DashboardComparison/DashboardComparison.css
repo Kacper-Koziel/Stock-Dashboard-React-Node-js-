@@ -113,6 +113,81 @@
     text-align: center;
 }
 
+.comparison-container.dark {
+    background: #121212;
+    color: #e0e0e0;
+
+}
+
+.comparison-container.dark .search-bar .search-icon {
+    color: #aaa;
+}
+
+.comparison-container.dark .search-bar input[type='text'] {
+    background-color: #1e1e1e;
+    color: #e0e0e0;
+    border: 2px solid #444;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.comparison-container.dark .subm-btn {
+    color: #bbb;
+    border-color: #666;
+}
+
+.comparison-container.dark .subm-btn:hover {
+    border-color: #ff5252;
+    color: #ff5252;
+}
+
+.comparison-container.dark .hints {
+    background-color: #1e1e1e;
+    box-shadow: inset 2px 2px 6px #141414, inset -2px -2px 6px #222222;
+}
+
+.comparison-container.dark .hints .hint {
+    border-bottom: 2px solid #333;
+    color: #ccc;
+}
+
+.comparison-container.dark .hints .hint:hover {
+    background-color: #2a2a2a;
+}
+
+.comparison-container.dark .rows .row {
+    background: linear-gradient(145deg, #1c1c1c, #222222);
+    border: 1px solid #2c2c2c;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    color: #ddd;
+}
+
+.comparison-container.dark .hints::-webkit-scrollbar {
+    width: 12px;
+}
+
+.comparison-container.dark .hints::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.comparison-container.dark .hints::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 4px;
+}
+
+.comparison-container.dark .hints::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+.comparison-container.dark .hints {
+    scrollbar-width: auto;
+    scrollbar-color: #444 #1e1e1e;
+}
+
+.comparison-container.dark .subm-btn:hover {
+    border-color: #b0b0b0;
+    color: #b0b0b0;
+}
+
 
 @media (min-width: 800px) {
     .comparison-container .search-bar {

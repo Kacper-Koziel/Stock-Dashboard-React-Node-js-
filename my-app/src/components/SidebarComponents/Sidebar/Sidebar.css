@@ -50,6 +50,10 @@
     font-size: 2rem;
 }
 
+.sidebar-container.dark {
+    background-color: #121212;
+}
+
 
 @media (min-width: 800px) {
     .sidebar-container {

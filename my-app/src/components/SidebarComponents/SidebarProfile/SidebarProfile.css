@@ -76,6 +76,42 @@
     animation: spinningGear 1s ease-in-out;
 }
 
+.sidebar-profile-container.dark {
+    background-color: #1f1f1f;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.sidebar-profile-container.dark .text-container h1 {
+    color: #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+.sidebar-profile-container.dark .text-container .profile-icon {
+    color: #f0f0f0;
+    transition: color 0.3s ease;
+}
+
+.sidebar-profile-container.dark .img-container .img-frame {
+    border: 5px solid #2e2e2e;
+    background-color: #121212;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.sidebar-profile-container.dark .options-btn {
+    background-color: #2e2e2e;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar-profile-container.dark .options-btn .settings-icon {
+    color: #f0f0f0;
+    transition: color 0.3s ease, transform 1s ease;
+}
+
+.sidebar-profile-container.dark .options-btn:hover .settings-icon {
+    animation: spinningGear 1s ease-in-out;
+}
+
+
 @keyframes spinningGear {
     0% {
         transform: rotateZ(0);

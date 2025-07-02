@@ -70,6 +70,59 @@
     font-size: 1.2rem;
 }
 
+.charts-container.dark {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.charts-container.dark .search-bar input[type='text'] {
+    background-color: #1e1e1e;
+    color: #f0f0f0;
+    border: 2px solid #444;
+}
+
+.charts-container.dark .search-bar .search-icon {
+    color: #888;
+}
+
+.charts-container.dark .hints {
+    background-color: #1e1e1e;
+    scrollbar-width: auto;
+    scrollbar-color: #444 #1e1e1e;
+}
+
+.charts-container.dark .hints .hint {
+    border-bottom: 2px solid #333;
+    color: #f0f0f0;
+}
+
+.charts-container.dark .hints .hint:hover {
+    background-color: #2a2a2a;
+}
+
+.charts-container.dark .shadow-text {
+    color: #666;
+}
+
+.charts-container.dark .hints::-webkit-scrollbar {
+    width: 8px;
+}
+
+.charts-container.dark .hints::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+
+.charts-container.dark .hints::-webkit-scrollbar-thumb {
+    background-color: #444;
+    border-radius: 4px;
+}
+
+.charts-container.dark .hints::-webkit-scrollbar-thumb:hover {
+    background-color: #666;
+}
+
+
+
 @media (min-width: 800px) {
     .charts-container .search-bar {
         width: 100%;

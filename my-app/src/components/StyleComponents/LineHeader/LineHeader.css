@@ -13,3 +13,7 @@
     background-color: #F8FAFC;
     margin-left: 1.5rem;
 }
+
+.line-header.dark h3{
+    background-color: #121212;
+}

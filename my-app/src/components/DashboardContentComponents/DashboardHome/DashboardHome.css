@@ -186,6 +186,28 @@
     backdrop-filter: blur(6px);
 }
 
+.home-container.dark .stats-container {
+    background: linear-gradient(145deg, #1e1e1e, #2b2b2b);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    color: #f5f5f5;
+}
+
+.home-container.dark .stats-container h1,
+.home-container.dark .stats-container h2 {
+    color: #f5f5f5;
+}
+
+.home-container.dark .stats-container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.home-container.dark .stats-container .active-star {
+    color: gold;
+}
+
+
 @media (min-width: 800px) {  
     .home-container .long-news {
         height: 20%;

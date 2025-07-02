@@ -7,6 +7,11 @@
     align-items: center;
 }
 
+.dashboard-container.dark {
+    background-color: #121212;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
 @media (min-width: 800px) {
     .dashboard-container {
         height: 90%;

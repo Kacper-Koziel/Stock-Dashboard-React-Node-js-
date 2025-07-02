@@ -6,7 +6,7 @@ import PopUp from "../../Alerts/PopUpAlert/PopUp";
 
 import './MenuHub.css'
 
-const MenuHub = ({isMenuHubDisplayed, setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => {
+const MenuHub = ({isMenuHubDisplayed, setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, colorMode, languageVersion, setColorMode, setLanguageVersion}) => {
 
     const [isModifyProfileMenuDisplayed, setIsModifyProfileMenuDisplayed] = useState(false);
     const [username, setUsername] = useState('');
@@ -49,10 +49,11 @@ const MenuHub = ({isMenuHubDisplayed, setIsMenuHubDisplayed, isSettingsMenuDispl
     return (
         <div className={`menu-hub ${isMenuHubDisplayed ? '' : 'hidden'}`}>
             <SettingsMenu isSettingsMenuDisplayed={isSettingsMenuDisplayed} setIsSettingsMenuDisplayed={setIsSettingsMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} 
-            setIsMenuHubDisplayed={setIsMenuHubDisplayed} email={email} token={token} username={username} id={id} setIsPopUpDisplayed={setIsPopUpDisplayed} setText={setText}/>
-            <ModifyProfileMenu isModifyProfileMenuDisplayed={isModifyProfileMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} setIsSettingMenuDisplayed={setIsSettingsMenuDisplayed} email={email} token={token} username={username} id={id} />
+            setIsMenuHubDisplayed={setIsMenuHubDisplayed} email={email} token={token} username={username} id={id} setIsPopUpDisplayed={setIsPopUpDisplayed} setText={setText} colorMode={colorMode} languageVersion={languageVersion}
+            setColorMode={setColorMode} setLanguageVersion={setLanguageVersion} />
+            <ModifyProfileMenu isModifyProfileMenuDisplayed={isModifyProfileMenuDisplayed} setIsModifyProfileMenuDisplayed={setIsModifyProfileMenuDisplayed} setIsSettingMenuDisplayed={setIsSettingsMenuDisplayed} email={email} token={token} username={username} id={id} colorMode={colorMode} languageVersion={languageVersion}/>
         
-            <PopUp text={text} isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed} />
+            <PopUp text={text} isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed} colorMode={colorMode} languageVersion={languageVersion}/>
         </div>
     )
 }

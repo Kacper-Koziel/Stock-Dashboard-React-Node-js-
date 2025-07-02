@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {useNavigate} from 'react-router-dom';
 import PopUp from "../../Alerts/PopUpAlert/PopUp";
-
+import translate from "../../../Translator/Translator";
 import './ForgotPasswordForm.css'
 
 const ForgotPasswordForm = ({ formState, setFormState, colorMode, languageVersion }) => {
@@ -32,7 +32,7 @@ const ForgotPasswordForm = ({ formState, setFormState, colorMode, languageVersio
 
 
         setIsPopUpDisplayed(true);
-        setPopUpText("Wysłano email z linkiem do resetu hasła");
+        setPopUpText(languageVersion === 'PL' ? "Wysłano email z linkiem do resetu hasła" : 'Email with password reset has been sent');
 
         handleSubmit();
     }
@@ -63,7 +63,7 @@ const ForgotPasswordForm = ({ formState, setFormState, colorMode, languageVersio
     return (
         <div className={`forgot-password-container ${colorMode}`}>
             <div className={`data ${formState === 3 ? 'shown' : 'hidden'}`}>
-                <h1> Odzyskaj hasło </h1>
+                <h1> {translate(languageVersion, 'Odzyskaj hasło')} </h1>
                 <form onSubmit={validateData}>
 
                     <div className="inputField">
@@ -73,10 +73,10 @@ const ForgotPasswordForm = ({ formState, setFormState, colorMode, languageVersio
                     </div>
     
 
-                    <input type="submit" value="Odzyskaj hasło" />
+                    <input type="submit" value={`${translate(languageVersion, 'Odzyskaj hasło')}`} />
                     <div className="forgot-password-options">
-                        <h5 onClick={() => setFormState(1)}>Zaloguj się</h5>
-                        <h5 onClick={() => setFormState(2)}>Zarejestruj się</h5>
+                        <h5 onClick={() => setFormState(1)}>{translate(languageVersion, 'Zaloguj się')}</h5>
+                        <h5 onClick={() => setFormState(2)}>{translate(languageVersion, 'Zarejestruj się')}</h5>
                     </div>
                 </form>
                 <PopUp isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed} text={popUpText}/>

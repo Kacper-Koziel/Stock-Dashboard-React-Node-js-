@@ -126,6 +126,104 @@
     display: none;
 }
 
+.settings-menu-container .data-container .data-container-text select {
+    width: 20%;
+    height: 80%;
+    border: none;
+    outline: none;
+    margin-left: 2%;
+    text-align-last: center;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: 2px solid black;
+    border-radius: 16px;
+    height: 2.5rem;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.settings-menu-container.dark .data-container .data-container-text select {
+    border-color: white;
+    color: white;
+}
+
+.settings-menu-container .data-container .data-container-text option {
+    border: none;
+    outline: none;
+    text-align: center;
+}
+
+.settings-menu-container.dark {
+    background-color: #121212;
+    border-color: #1e1e1e;
+    color: #b0b0b0;
+}
+
+.settings-menu-container.dark .quit-btn .x-icon {
+    color: #b0b0b0;
+    background-color: transparent;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.settings-menu-container.dark .quit-btn .x-icon:hover {
+    color: white;
+}
+
+.settings-menu-container.dark .picture-container .profile-picture {
+    border: 2px solid #555;
+    background-color: #222;
+}
+
+.settings-menu-container.dark .data-container .data-container-text h2 {
+    color: #ddd;
+}
+
+.settings-menu-container.dark .data-container .data-container-text h2.email {
+    color: #999;
+}
+
+.settings-menu-container.dark .data-container .data-container-text h1 {
+    color: #b0b0b0;
+    border-color: #b0b0b0;
+}
+
+.settings-menu-container.dark .data-container .data-container-text span.active {
+    color: rgb(44, 205, 44);
+}
+
+.settings-menu-container.dark .data-container .data-container-text span.disabled {
+    color: #ff5555;
+}
+
+.settings-menu-container.dark .data-container .data-container-text h1.delete {
+    background-color: white;
+    color: #121212;
+    border: none;
+    transition: background-color 0.5s ease;
+}
+
+.settings-menu-container.dark .data-container .data-container-text h1.delete:hover {
+    cursor: pointer;
+    color: #121212;
+}
+
+.settings-menu-container.dark .data-container .data-container-text h1:hover {
+    color: white;
+    border-color: white;
+    cursor: pointer;
+}
+
+.settings-menu-container.dark .settings-menu-container .data-container .data-container-text h1:hover .lock-icon {
+    animation: moveLock 0.7s ease-in-out;
+}
+
+.settings-menu-container.dark option {
+    background-color: #121212;
+    color: white;
+    padding: 10px;
+}
+
 @keyframes moveLock {
     0% {
         transform: rotateZ(0);

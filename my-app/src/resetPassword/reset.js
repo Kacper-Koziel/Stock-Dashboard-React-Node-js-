@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import './reset.css';
 import PopUp from '../components/Alerts/PopUpAlert/PopUp';
 import { useLocation } from "react-router-dom";
+import translate from "../Translator/Translator";
 
-function ResetPassword() {
+function ResetPassword({colorMode, languageVersion}) {
 
     const location = useLocation();
     const params = new URLSearchParams(location.search);
@@ -79,7 +80,7 @@ function ResetPassword() {
                 return;
             }
 
-            setText('Zmieniono hasło. Zaloguj się ponownie');
+            setText(languageVersion === 'PL' ? 'Zmieniono hasło. Zaloguj się ponownie' : 'Password changed. Log in again');
             setIsDisplayed(true);
 
         }   
@@ -94,24 +95,24 @@ function ResetPassword() {
     
 
     return (
-        <div className="reset-container">
+        <div className={`reset-container ${colorMode}`}>
             <div className={`data`}>
-                <h1>Zmień hasło </h1>
+                <h1>{translate(languageVersion, 'Zmień hasło')} </h1>
                 <form className="form-content" onSubmit={validateData}>
                     <div className="input-group">
                         <div className="input-field">
-                            <h3>Hasło</h3>
+                            <h3>{translate(languageVersion, 'Hasło')}</h3>
                             <input type="password" id="reset-password" name="password" placeholder="password" onChange={handleChange}/>
                             {errors.password && <span className="error-text">*{errors.password}</span>}
                         </div>
 
                         <div className="input-field">
-                            <h3>Powtórz Hasło</h3>
-                            <input type="password" id="reset-password-again" name="passwordAgain" placeholder="password" onChange={handleChange} />
+                            <h3>{translate(languageVersion, 'Powtórz hasło')}</h3>
+                            <input type="password" id="reset-password-again" name="passwordAgain" placeholder="repeated password" onChange={handleChange} />
                             {errors.passwordAgain && <span className="error-text">*{errors.passwordAgain}</span>}
                         </div>
 
-                        <input type="submit" value="Zmień hasło" />
+                        <input type="submit" value={`${translate(languageVersion, 'Zmień hasło')}`} />
                     </div>
                 </form>
 

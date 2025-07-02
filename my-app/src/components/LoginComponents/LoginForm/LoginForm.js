@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './LoginForm.css';
+import translate from "../../../Translator/Translator";
 
 const LoginForm = ({ formState, setFormState, setIsLogged, colorMode, languageVersion }) => {
     const navigate = useNavigate();
@@ -116,11 +117,11 @@ const LoginForm = ({ formState, setFormState, setIsLogged, colorMode, languageVe
     return (
         <div className={`login-container ${colorMode}`}>
             <div className={`data ${formState === 1 ? 'shown' : 'hidden'}`}>
-                <h1>Zaloguj się </h1>
+                <h1> {translate(languageVersion, 'Zaloguj się')} </h1>
                 <form className="form-content" onSubmit={validateData}>
                     <div className="input-group">
                         <div className="input-field">
-                            <h3>Nazwa użytkownika</h3>
+                            <h3>{translate(languageVersion, 'Nazwa użytkownika')}</h3>
                             <input type="text" id="login-username" name="username" placeholder="username" onChange={handleChange} />
                             {errors.username && <span className="error-text">*{errors.username}</span>}
                         </div>
@@ -134,15 +135,15 @@ const LoginForm = ({ formState, setFormState, setIsLogged, colorMode, languageVe
 
                     <div className="input-group">
                         <div className="input-field">
-                            <h3>Hasło</h3>
+                            <h3>{translate(languageVersion, 'Hasło')}</h3>
                             <input type="password" id="login-password" name="password" placeholder="password" onChange={handleChange} />
                             {errors.password && <span className="error-text">*{errors.password}</span>}
                         </div>
 
-                        <input type="submit" value="Zaloguj się" />
+                        <input type="submit" value={`${translate(languageVersion, 'Zaloguj się')}`} />
                         <div className="login-options">
-                            <h5 onClick={() => {setFormState(2); clearForm()}}>Zarejestruj się</h5>
-                            <h5 onClick={() => {setFormState(3); clearForm()}}>Odzyskaj hasło</h5>
+                            <h5 onClick={() => {setFormState(2); clearForm()}}>{translate(languageVersion, 'Zarejestruj się')}</h5>
+                            <h5 onClick={() => {setFormState(3); clearForm()}}>{translate(languageVersion, 'Odzyskaj hasło')}</h5>
                         </div>
                     </div>
                 

@@ -6,7 +6,9 @@ import './DashboardComparison.css'
 import { faScaleBalanced, faSearch } from "@fortawesome/free-solid-svg-icons";
 import CryptoChart from "../../StyleComponents/Chart/Chart";
 
-const DashboardComparison = ({currentActive, refs}) => {
+import translate from "../../../Translator/Translator";
+
+const DashboardComparison = ({currentActive, refs, colorMode, languageVersion}) => {
 
     const [searchSwitch, setSearchSwitch] = useState('first');
 
@@ -23,8 +25,8 @@ const DashboardComparison = ({currentActive, refs}) => {
     const [firstCoin, setFirstCoin] = useState(null);
     const [secondCoin, setSecondCoin] = useState(null)
 
-    const [firstCoinLabel, setFirstCoinLabel] = useState('Search for a first coin');
-    const [secondCoinLabel, setSecondCoinLabel] = useState('Search for a second coin');
+    const [firstCoinLabel, setFirstCoinLabel] = useState('Wyszukaj pierwszego coina');
+    const [secondCoinLabel, setSecondCoinLabel] = useState('Wyszukaj drugiego coina');
 
     const [firstChartData, setFirstChartData] = useState([]);
     const [secondChartData, setSecondChartData] = useState([]);
@@ -94,11 +96,6 @@ const DashboardComparison = ({currentActive, refs}) => {
         setCryptoResults([]); 
     };
 
-    useEffect(() => {
-        console.log(firstChartData.length);
-        console.log(secondChartData.length);
-    }, [firstChartData, secondChartData]);
-
     const compare = async () => {
         let selectedFirstCoin = firstCoin;
         let selectedSecondCoin = secondCoin;
@@ -164,15 +161,15 @@ const DashboardComparison = ({currentActive, refs}) => {
 
     
     return (
-        <div className="comparison-container" ref={refs[3]['ref']}>
+        <div className={`comparison-container ${colorMode}`} ref={refs[3]['ref']}>
             <div className="header">
-                <h1>Comparison <FontAwesomeIcon icon={faScaleBalanced} /> </h1>
+                <h1>{translate(languageVersion, 'Porównania')} <FontAwesomeIcon icon={faScaleBalanced} /> </h1>
             </div>
 
             <form onSubmit={(e) => e.preventDefault()}>
                 <div className="search-bar" ref={searchBarRef}>
                     <FontAwesomeIcon icon={faSearch} className="search-icon" />
-                    <input type="text" className="search-bar" placeholder={`Enter ${searchSwitch} crypto name..`} value={inputValue} onChange={(change) => {filterResults(change.target.value.toLowerCase());}} onClick={(change) => filterResults(change.target.value.toLowerCase())}/>
+                    <input type="text" className="search-bar" placeholder={`${translate(languageVersion, `${searchSwitch === 'first' ? 'Wpisz nazwę pierwszej kryptowaluty' : 'Wpisz nazwę drugiej kryptowaluty'}`)}..`} value={inputValue} onChange={(change) => {filterResults(change.target.value.toLowerCase());}} onClick={(change) => filterResults(change.target.value.toLowerCase())}/>
                 </div>
 
                 {cryptoResults.length > 0 ? (
@@ -189,18 +186,18 @@ const DashboardComparison = ({currentActive, refs}) => {
                 )}
 
                 
-                <button type="submit" value={'Compare'} className="subm-btn" onClick={compare} ref={submBtn}> Compare </button>
+                <button type="submit" value={'Compare'} className="subm-btn" onClick={compare} ref={submBtn}> {translate(languageVersion, 'Porównaj')} </button>
             </form>
 
             <div className="rows">
                 <div className="row" onClick={ () => { setSearchSwitch('first'); setInputValue(firstCoin ? `(${firstCoin.symbol.toUpperCase()}) ${firstCoin.name}` : '')} }>
-                    <h2 className="coin-name">{firstCoinLabel}</h2>
+                    <h2 className="coin-name">{translate(languageVersion, firstCoinLabel)}</h2>
 
                     {firstChartData.length > 0 ? (
                         <>
-                            <CryptoChart chartData={firstChartData} />
+                            <CryptoChart chartData={firstChartData} colorMode={colorMode} />
                             <div className="text">
-                                <h2>Current price: {firstChartData[firstChartData.length - 1].price > 0.01 ? firstChartData[firstChartData.length - 1].price.toFixed(2) : firstChartData[firstChartData.length - 1].price.toFixed(4)} USD</h2>
+                                <h2>{translate(languageVersion, 'Aktualna cena')}: {firstChartData[firstChartData.length - 1].price > 0.01 ? firstChartData[firstChartData.length - 1].price.toFixed(2) : firstChartData[firstChartData.length - 1].price.toFixed(4)} USD</h2>
                             </div>
                         </>
                         
@@ -211,20 +208,20 @@ const DashboardComparison = ({currentActive, refs}) => {
                 </div>
 
                 <div className="row" onClick={ () => { setSearchSwitch('second'); setInputValue(secondCoin ? `(${secondCoin.symbol.toUpperCase()}) ${secondCoin.name}` : '')} }>
-                    <h2 className="coin-name">{secondCoinLabel}</h2>
+                    <h2 className="coin-name">{translate(languageVersion, secondCoinLabel)}</h2>
 
                     {secondChartData.length > 0 ? (                        
                         <>
-                            <CryptoChart chartData={secondChartData} />
+                            <CryptoChart chartData={secondChartData} colorMode={colorMode}/>
                             <div className="text">
-                                <h2>Current price: {secondChartData[secondChartData.length - 1].price > 0.01 ? secondChartData[secondChartData.length - 1].price.toFixed(2) : secondChartData[secondChartData.length - 1].price.toFixed(4)} USD</h2>
+                                <h2>{translate(languageVersion, 'Aktualna cena')}: {secondChartData[secondChartData.length - 1].price > 0.01 ? secondChartData[secondChartData.length - 1].price.toFixed(2) : secondChartData[secondChartData.length - 1].price.toFixed(4)} USD</h2>
                             </div>
                         </>
                     ) : <></>}
                 </div>
             </div>
 
-            <PopUp text={"API Calls limit exceeded, please wait and try again later"} isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed}/>
+            <PopUp text={"Przekroczono limit wywołań API. Proszę zaczekać i spróbować ponownie później"} isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed} colorMode={colorMode} languageVersion={languageVersion}/>
         </div>
     )
 }

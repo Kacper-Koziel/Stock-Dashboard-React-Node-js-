@@ -80,6 +80,61 @@ input[type="submit"]:hover {
 }
 
 
+.reset-container.dark {
+    background-color: #121212;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.reset-container.dark h1 {
+    color: #f0f0f0;
+}
+
+.reset-container.dark .input-field h3 {
+    color: #b0b0b0;
+}
+
+.reset-container.dark .input-field input[type="text"],
+.reset-container.dark .input-field input[type="password"],
+.reset-container.dark .input-field input[type="email"] {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.reset-container.dark .input-field input[type="text"]:focus,
+.reset-container.dark .input-field input[type="password"]:focus, 
+.reset-container.dark .input-field input[type="email"]:focus {
+    background-color: #222;
+    border-color: #555;
+}
+
+.reset-container.dark input[type="submit"] {
+    background-color: #2e2e2e;
+    color: #f0f0f0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.reset-container.dark input[type="submit"]:hover {
+    background-color: #3a3a3a;
+    transform: translateY(-2px);
+}
+
+.reset-container.dark .register-options h5 {
+    color: #888;
+    transition: color 0.3s ease;
+}
+
+.reset-container.dark .register-options h5:hover {
+    color: #aaa;
+}
+
+.reset-container.dark .error-text {
+    color: #ff5555;
+}
+
+
 @media (min-width: 800px) {
     .reset-container {
         margin-top: 0;

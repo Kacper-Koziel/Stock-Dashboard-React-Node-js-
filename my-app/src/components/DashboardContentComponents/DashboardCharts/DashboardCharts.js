@@ -5,8 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChartColumn, faSearch } from "@fortawesome/free-solid-svg-icons";
 import CryptoChart from "../../StyleComponents/Chart/Chart";
 import PopUp from "../../Alerts/PopUpAlert/PopUp";
+import translate from "../../../Translator/Translator";
 
-const DashboardCharts = ({currentActive, refs}) => {
+const DashboardCharts = ({currentActive, refs, colorMode, languageVersion}) => {
 
     const [coins, setCoins] = useState([]);
 
@@ -99,15 +100,15 @@ const DashboardCharts = ({currentActive, refs}) => {
     }
 
     return (
-        <div className="charts-container" ref={refs[2]['ref']}>
+        <div className={`charts-container ${colorMode}`} ref={refs[2]['ref']}>
             <div className="header">
-                <h1>Charts <FontAwesomeIcon icon={faChartColumn} /> </h1>
+                <h1>{translate(languageVersion, 'Wykresy')} <FontAwesomeIcon icon={faChartColumn} /> </h1>
             </div>
 
             <form onSubmit={(e) => {createChart(e)}} ref={searchBarRef}>
                 <div className="search-bar">
                     <FontAwesomeIcon icon={faSearch} className="search-icon" />
-                    <input type="text" className="search-bar" placeholder="Enter crypto name.." value={inputValue} onChange={(change) => {filterResults(change.target.value.toLowerCase());}} onClick={(change) => filterResults(change.target.value.toLowerCase())}/>
+                    <input type="text" className="search-bar" placeholder={`${translate(languageVersion, 'Wpisz nazwę kryptowaluty')}..`} value={inputValue} onChange={(change) => {filterResults(change.target.value.toLowerCase());}} onClick={(change) => filterResults(change.target.value.toLowerCase())}/>
                 </div>
 
                 {cryptoResults.length > 0 ? (
@@ -124,9 +125,9 @@ const DashboardCharts = ({currentActive, refs}) => {
                 )}
             </form>
             
-            {chartData.length > 0 ? (<CryptoChart chartData={chartData} />) : (<h2 className="shadow-text">Search a coin to see its chart</h2>)}
+            {chartData.length > 0 ? (<CryptoChart chartData={chartData} colorMode={colorMode}/>) : (<h2 className="shadow-text">Search a coin to see its chart</h2>)}
             
-            <PopUp text={"API Calls limit exceeded, please wait and try again later"} isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed}/>
+            <PopUp text={"Przekroczono limit wywołań API. Proszę zaczekać i spróbować ponownie później"} isPopUpDisplayed={isPopUpDisplayed} setIsPopUpDisplayed={setIsPopUpDisplayed} colorMode={colorMode} languageVersion={languageVersion}/>
         </div>
     );
 }   

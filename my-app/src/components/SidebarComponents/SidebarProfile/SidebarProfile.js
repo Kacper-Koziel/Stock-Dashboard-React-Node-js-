@@ -3,8 +3,9 @@ import { useLocation } from "react-router-dom";
 import './SidebarProfile.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGear } from "@fortawesome/free-solid-svg-icons";
+import translate from "../../../Translator/Translator";
 
-const SidebarProfile = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsMenuDisplayed}) => {
+const SidebarProfile = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSettingsMenuDisplayed, colorMode, languageVersion}) => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const location = useLocation();
@@ -38,7 +39,7 @@ const SidebarProfile = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSe
     }, [token]);
 
     return (
-        <div className="sidebar-profile-container">
+        <div className={`sidebar-profile-container ${colorMode}`}>
 
 
             <div className="img-container">
@@ -48,7 +49,7 @@ const SidebarProfile = ({setIsMenuHubDisplayed, isSettingsMenuDisplayed, setIsSe
             </div>
 
             <div className="text-container">
-                <h1>{`Welcome ${username}`}</h1>
+                <h1>{`${translate(languageVersion, 'Witaj')} ${username}`}</h1>
             </div>
 
             <div className="options-btn" onClick={() => {setIsMenuHubDisplayed(true); setIsSettingsMenuDisplayed(true); console.log(imageUrl)}}>

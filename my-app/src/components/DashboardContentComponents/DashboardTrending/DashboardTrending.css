@@ -76,6 +76,62 @@
     text-align: center;
 }
 
+.trending-container.dark {
+    background-color: #121212;
+}
+
+.trending-container.dark .header {
+    color: #b0b0b0;
+}
+
+.trending-container.dark .waiting {
+    color: #b0b0b0;
+}
+
+.trending-container.dark .slider .trendig-card {
+    background: linear-gradient(145deg, #1e1e1e, #2c2c2c);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    color: #f5f5f5;
+}
+
+.trending-container.dark .slider .trendig-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+}
+
+.trending-container.dark .slider .trendig-card .text {
+    color: #e0e0e0;
+}
+
+.trending-container.dark .image-frame {
+    border: 2px solid #444;
+}
+
+.trending-container.dark .slider::-webkit-scrollbar {
+    height: 12px;
+}
+
+.trending-container.dark .slider::-webkit-scrollbar-track {
+    background: #1e1e1e;
+    border-radius: 4px;
+}
+
+.trending-container.dark .slider::-webkit-scrollbar-thumb {
+    background: #444;
+    border-radius: 4px;
+    transition: background 0.3s ease;
+}
+
+.trending-container.dark .slider::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
+
+.trending-container.dark .slider {
+    scrollbar-width: auto;
+    scrollbar-color: #444 #1e1e1e;
+}
+
+
 
 @media (min-width: 800px) { 
     .trending-container .slider .trendig-card {

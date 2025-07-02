@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './RegisterForm.css';
-
+import translate from "../../../Translator/Translator";
 
 const RegisterForm = ({formState, setFormState, colorMode, languageVersion}) => {
     const [data, setData] = useState({
@@ -111,12 +111,12 @@ const RegisterForm = ({formState, setFormState, colorMode, languageVersion}) => 
 
             <div className={`data ${formState === 2 ? 'shown' : 'hidden'}`}>
 
-                <h1>Zarejestruj się</h1>
+                <h1>{translate(languageVersion, 'Zarejestruj się')}</h1>
                 <form onSubmit={validateData} className="form-content">
 
                     <div className="input-group">
                         <div className="input-field">
-                            <h3>Nazwa użytkownika </h3>
+                            <h3>{translate(languageVersion, 'Nazwa użytkownika')} </h3>
                             <input type="text" id="register-username" value={data.username} name="username" onChange={handleChange} placeholder="username"/>
                             {errors.username && <span className="error-text">*{errors.username}</span>}
                         </div>
@@ -130,15 +130,15 @@ const RegisterForm = ({formState, setFormState, colorMode, languageVersion}) => 
 
                     <div className="input-group">
                         <div className="input-field">
-                            <h3>Hasło</h3>
+                            <h3>{translate(languageVersion, 'Hasło')}</h3>
                             <input type="password" id="register-password" value={data.password} name="password" onChange={handleChange} placeholder="password"/>
                             {errors.password && <span className="error-text">*{errors.password}</span>}
                         </div>
 
-                        <input type="submit" value="Zarejestruj się" />
+                        <input type="submit" value={`${translate(languageVersion, 'Zarejestruj się')}`} />
                         <div className="register-options">
-                            <h5 onClick={() => {setFormState(1); clearForm()}}>Zaloguj się</h5>
-                            <h5 onClick={() => {setFormState(3); clearForm()}}>Odzyskaj hasło</h5>
+                            <h5 onClick={() => {setFormState(1); clearForm()}}>{translate(languageVersion, 'Zaloguj się')}</h5>
+                            <h5 onClick={() => {setFormState(3); clearForm()}}>{translate(languageVersion, 'Odzyskaj hasło')}</h5>
                         </div>
                     </div>
                 </form>

@@ -4,8 +4,9 @@ import './ModifyProfileMenu.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile, faFolder, faX } from "@fortawesome/free-solid-svg-icons";
 import LineHeader from "../../StyleComponents/LineHeader/LineHeader";
+import translate from "../../../Translator/Translator";
 
-const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenuDisplayed, setIsSettingMenuDisplayed, email, token, username, id}) => {
+const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenuDisplayed, setIsSettingMenuDisplayed, email, token, username, id, colorMode, languageVersion}) => {
     const imageUrl = `${process.env.REACT_APP_API_URL}/getProfilePicture?email=${encodeURIComponent(email)}&token=${encodeURIComponent(token)}`;
 
     const [data, setData] = useState({
@@ -77,23 +78,23 @@ const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenu
     }
 
     return (
-        <div className={`modify-profile-menu ${isModifyProfileMenuDisplayed ? '' : 'hidden'}`}>
+        <div className={`modify-profile-menu ${isModifyProfileMenuDisplayed ? '' : 'hidden'} ${colorMode}`}>
             <div className="quit-btn" onClick={() => {setIsModifyProfileMenuDisplayed(false); setIsSettingMenuDisplayed(true); } }>
                 <FontAwesomeIcon icon={faX} className="x-icon"/>
             </div>
 
-            <h2 className="header">Modify user data</h2>
+            <h2 className="header">{translate(languageVersion, 'Modyfikuj dane użytkownika')}</h2>
 
             <div className="picture-container">
                 <div className="profile-picture" style={{backgroundImage: `url(${imageUrl})`}} />
             </div>
 
-            <LineHeader text={"Modify light data"} />
+            <LineHeader text={`${translate(languageVersion, 'Modyfikuj lekkie dane')}`} colorMode={colorMode}/>
             
             <div className="modify-light-data">
                 <form>
                     <div className="input-field">
-                        <h3>Nazwa użytkownika</h3>
+                        <h3>{translate(languageVersion, 'Nazwa użytkownika')}</h3>
                         <input type="text" id="modify-username" name="username" placeholder={username} onChange={handleChange} />
                     </div>
 
@@ -104,18 +105,18 @@ const ModifyProfileMenu = ({isModifyProfileMenuDisplayed, setIsModifyProfileMenu
                 </form>
             </div>
 
-            <LineHeader text={"Upload new profile image"} />
+            <LineHeader text={`${translate(languageVersion, 'Dodaj nowe profilowe')}`} colorMode={colorMode}/>
 
             <div className="upload-profile-pic">
                 <div className="input-field">
-                    <label htmlFor="pic">Upload profile picture <FontAwesomeIcon icon={faFolder} className="upload-icon" /></label>
+                    <label htmlFor="pic">{translate(languageVersion, 'Dodaj profilowe')} <FontAwesomeIcon icon={faFolder} className="upload-icon" /></label>
                     <input type="file" id="pic" name="pic" onChange={handleChange}/> 
-                    <h1>{data.filename.trim() === '' ? 'No file selected' : data.filename.split(/(\\|\/)/g).pop()}</h1>
+                    <h1>{data.filename.trim() === '' ? `${translate(languageVersion, 'Nie wybrano pliku')}` : data.filename.split(/(\\|\/)/g).pop()}</h1>
                 </div>
             </div>
 
             <div className="apply-container"> 
-                <h4 onClick={handleSubmit}>Apply</h4>
+                <h4 onClick={handleSubmit}>{translate(languageVersion, 'Zastosuj')}</h4>
             </div>
         </div>
     );

@@ -134,6 +134,75 @@ input[type="file"] {
     background-color: rgb(26, 150, 26);
 }
 
+.modify-profile-menu.dark {
+    background-color: #121212;
+    border-color: #2e2e2e;
+    color: #b0b0b0;
+}
+
+.modify-profile-menu.dark .quit-btn .x-icon {
+    color: #b0b0b0;
+    background-color: transparent;
+    transition: color 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.modify-profile-menu.dark .quit-btn .x-icon:hover {
+    color: white;
+}
+
+.modify-profile-menu.dark .picture-container .profile-picture {
+    border: 2px solid #555;
+    background-color: #222;
+}
+
+.modify-profile-menu.dark .header {
+    color: #ddd;
+}
+
+.modify-profile-menu.dark .modify-light-data .input-field input[type="text"],
+.modify-profile-menu.dark .modify-light-data .input-field input[type="email"] {
+    background-color: #222;
+    color: #eee;
+    border: 1px solid #444;
+    transition: all 0.5s ease;
+}
+
+.modify-profile-menu.dark .modify-light-data .input-field input[type="text"]:focus,
+.modify-profile-menu.dark .modify-light-data .input-field input[type="email"]:focus {
+    background-color: #222;
+    border-color: #555;
+    outline: none;
+    color: #fff;
+}
+
+.modify-profile-menu.dark .upload-profile-pic .input-field label {
+    color: #b0b0b0;
+    border: 2px solid #b0b0b0;
+    cursor: pointer;
+    transition: border 0.3s ease, color 0.3s ease;
+}
+
+.modify-profile-menu.dark .upload-profile-pic .input-field label:hover .upload-icon {
+    animation: moveLock 0.7s ease-in-out;
+}
+
+.modify-profile-menu.dark .upload-profile-pic .input-field h1 {
+    color: #b0b0b0;
+}
+
+.modify-profile-menu.dark .apply-container h4 {
+    background-color: rgb(48, 202, 48);
+    color: white;
+    transition: background 0.5s ease;
+    cursor: pointer;
+}
+
+.modify-profile-menu.dark .apply-container h4:hover {
+    background-color: rgb(26, 150, 26);
+}
+
+
 @media (min-width: 800px) {
     .modify-profile-menu {
         top: 3%;
